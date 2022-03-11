@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Install a local development package.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for install {packrat}"><tr><td>install {packrat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Install a local development package.</h2>
+
+<h3>Description</h3>
+
+<p>Uses <code>R CMD INSTALL</code> to install the package. Will also try to install
+dependencies of the package from CRAN, if they're not already installed.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+install(pkg = ".", reload = TRUE, quick = FALSE, local = TRUE,
+  args = getOption("devtools.install.args"), quiet = FALSE,
+  dependencies = NA, build_vignettes = !quick,
+  keep_source = getOption("keep.source.pkgs"))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>pkg</code></td>
+<td>
+<p>package description, can be path or package name.</p>
+</td></tr>
+<tr valign="top"><td><code>reload</code></td>
+<td>
+<p>if <code>TRUE</code> (the default), will automatically reload the
+package after installing.</p>
+</td></tr>
+<tr valign="top"><td><code>quick</code></td>
+<td>
+<p>if <code>TRUE</code> skips docs, multiple-architectures,
+demos, and vignettes, to make installation as fast as possible.</p>
+</td></tr>
+<tr valign="top"><td><code>local</code></td>
+<td>
+<p>if <code>FALSE</code> <code><a href="../../utils/html/PkgUtils.html">build</a></code>s the package first:
+this ensures that the installation is completely clean, and prevents any
+binary artefacts (like &lsquo;<span class="file">.o</span>&rsquo;, <code>.so</code>) from appearing in your local
+package directory, but is considerably slower, because every compile has
+to start from scratch.</p>
+</td></tr>
+<tr valign="top"><td><code>args</code></td>
+<td>
+<p>An optional character vector of additional command line
+arguments to be passed to <code>R CMD install</code>. This defaults to the
+value of the option <code>"devtools.install.args"</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>quiet</code></td>
+<td>
+<p>if <code>TRUE</code> suppresses output from this function.</p>
+</td></tr>
+<tr valign="top"><td><code>dependencies</code></td>
+<td>
+<p><code>logical</code> indicating to also install uninstalled
+packages which this <code>pkg</code> depends on/links to/suggests. See
+argument <code>dependencies</code> of <code><a href="../../utils/html/install.packages.html">install.packages</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>build_vignettes</code></td>
+<td>
+<p>if <code>TRUE</code>, will build vignettes. Normally it is
+<code>build</code> that's responsible for creating vignettes; this argument makes
+sure vignettes are built even if a build never happens (i.e. because
+<code>local = TRUE</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>keep_source</code></td>
+<td>
+<p>If <code>TRUE</code> will keep the srcrefs from an installed
+package. This is useful for debugging (especially inside of RStudio).
+It defaults to the option <code>"keep.source.pkgs"</code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>By default, installation takes place using the current package directory.
+If you have compiled code, this means that artefacts of compilation will be
+created in the <code>src/</code> directory. If you want to avoid this, you can
+use <code>local = FALSE</code> to first build a package bundle and then install
+it from a temporary directory. This is slower, but keeps the source
+directory pristine.
+</p>
+<p>If the package is loaded, it will be reloaded after installation.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>packrat</em> version 0.5.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

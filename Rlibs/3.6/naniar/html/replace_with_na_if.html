@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Replace values with NA based on some condition, for variables...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for replace_with_na_if {naniar}"><tr><td>replace_with_na_if {naniar}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Replace values with NA based on some condition, for variables that meet some predicate</h2>
+
+<h3>Description</h3>
+
+<p>Replace values with NA based on some condition, for variables that meet some predicate
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+replace_with_na_if(data, .predicate, condition)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>Dataframe</p>
+</td></tr>
+<tr valign="top"><td><code>.predicate</code></td>
+<td>
+<p>A predicate function to be applied to the columns or a
+logical vector.</p>
+</td></tr>
+<tr valign="top"><td><code>condition</code></td>
+<td>
+<p>A condition required to be TRUE to set NA. Here, the condition
+is specified with a formula, following the syntax: <code>~.x {condition}</code>.
+For example, writing <code>~.x &lt; 20</code> would mean &quot;where a variable value is less
+than 20, replace with NA&quot;.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>Dataframe
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+dat_ms &lt;- tibble::tribble(~x,  ~y,    ~z,
+                          1,   "A",   -100,
+                          3,   "N/A", -99,
+                          NA,  NA,    -98,
+                          -99, "E",   -101,
+                          -98, "F",   -1)
+
+dat_ms
+
+replace_with_na_if(data = dat_ms,
+                 .predicate = is.character,
+                 condition = ~.x == "N/A")
+replace_with_na_if(data = dat_ms,
+                   .predicate = is.character,
+                   condition = ~.x %in% common_na_strings)
+
+replace_with_na(dat_ms,
+              to_na = list(x = c(-99, -98),
+                           y = c("N/A"),
+                           z = c(-101)))
+
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>naniar</em> version 0.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

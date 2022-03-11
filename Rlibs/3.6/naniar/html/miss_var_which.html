@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Which variables contain missing values?</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for miss_var_which {naniar}"><tr><td>miss_var_which {naniar}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Which variables contain missing values?</h2>
+
+<h3>Description</h3>
+
+<p>It can be helpful when writing other functions to just return the names
+of the variables that contain missing values. <code>miss_var_which</code> returns a
+vector of variable names that contain missings. It will return NULL when
+there are no missings.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+miss_var_which(data)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>a data.frame</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>character vector of variable names
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+miss_var_which(airquality)
+
+miss_var_which(iris)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>naniar</em> version 0.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

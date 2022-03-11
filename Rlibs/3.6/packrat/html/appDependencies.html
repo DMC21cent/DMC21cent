@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Detect Application Dependencies</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for appDependencies {packrat}"><tr><td>appDependencies {packrat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Detect Application Dependencies</h2>
+
+<h3>Description</h3>
+
+<p>Recursively detect all package dependencies for an application. This function
+parses all <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> files in the application directory to determine what packages
+the application depends directly.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+appDependencies(project = NULL, available.packages = NULL,
+  fields = opts$snapshot.fields(), implicit.packrat.dependency = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>project</code></td>
+<td>
+<p>Directory containing application. Defaults to current working
+directory.</p>
+</td></tr>
+<tr valign="top"><td><code>implicit.packrat.dependency</code></td>
+<td>
+<p>Include <code>packrat</code> as an implicit
+dependency of this project, if not otherwise discovered? This should be
+<code>FALSE</code> only if you can guarantee that <code>packrat</code> will be available
+via other means when attempting to load this project.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Only direct dependencies are detected (i.e. no recursion is done to find the
+dependencies of the dependencies).
+</p>
+<p>Dependencies are determined by parsing application source code and
+looking for calls to <code>library</code>, <code>require</code>, <code>::</code>, and
+<code>:::</code>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Returns a list of the names of the packages on which R code in the
+application depends.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+## Not run: 
+
+# dependencies for the app in the current working dir
+appDependencies()
+
+# dependencies for an app in another directory
+appDependencies("~/projects/shiny/app1")
+
+
+## End(Not run)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>packrat</em> version 0.5.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

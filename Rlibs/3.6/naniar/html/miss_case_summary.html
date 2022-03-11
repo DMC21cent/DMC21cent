@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Summarise the missingness in each case</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for miss_case_summary {naniar}"><tr><td>miss_case_summary {naniar}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Summarise the missingness in each case</h2>
+
+<h3>Description</h3>
+
+<p>Provide a summary for each case in the data of the number, percent missings,
+and cumulative sum of missings of the order of the variables. By default,
+it orders by the most missings in each variable.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+miss_case_summary(data, order = TRUE, add_cumsum = FALSE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>a data.frame</p>
+</td></tr>
+<tr valign="top"><td><code>order</code></td>
+<td>
+<p>a logical indicating whether or not to order the result by
+n_miss. Defaults to TRUE. If FALSE, order of cases is the order input.</p>
+</td></tr>
+<tr valign="top"><td><code>add_cumsum</code></td>
+<td>
+<p>logical indicating whether or not to add the cumulative
+sum of missings to the data. This can be useful when exploring patterns
+of nonresponse. These are calculated as the cumulative sum of the missings
+in the variables as they are first presented to the function.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>extra arguments</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a tibble of the percent of missing data in each case.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="pct-miss-complete-case.html">pct_miss_case()</a></code> <code><a href="prop-miss-complete-case.html">prop_miss_case()</a></code> <code><a href="pct-miss-complete-var.html">pct_miss_var()</a></code> <code><a href="prop-miss-complete-var.html">prop_miss_var()</a></code> <code><a href="pct-miss-complete-case.html">pct_complete_case()</a></code> <code><a href="prop-miss-complete-case.html">prop_complete_case()</a></code> <code><a href="pct-miss-complete-var.html">pct_complete_var()</a></code> <code><a href="prop-miss-complete-var.html">prop_complete_var()</a></code> <code><a href="miss_prop_summary.html">miss_prop_summary()</a></code> <code><a href="miss_case_summary.html">miss_case_summary()</a></code> <code><a href="miss_case_table.html">miss_case_table()</a></code> <code><a href="miss_summary.html">miss_summary()</a></code> <code><a href="miss-complete-var-prop.html">miss_var_prop()</a></code> <code><a href="miss_var_run.html">miss_var_run()</a></code> <code><a href="miss_var_span.html">miss_var_span()</a></code> <code><a href="miss_var_summary.html">miss_var_summary()</a></code> <code><a href="miss_var_table.html">miss_var_table()</a></code> <code><a href="n_complete.html">n_complete()</a></code> <code><a href="n_complete_row.html">n_complete_row()</a></code> <code><a href="n_miss.html">n_miss()</a></code> <code><a href="n_miss_row.html">n_miss_row()</a></code> <code><a href="pct_complete.html">pct_complete()</a></code> <code><a href="pct_miss.html">pct_miss()</a></code> <code><a href="prop_complete.html">prop_complete()</a></code> <code><a href="prop_complete_row.html">prop_complete_row()</a></code> <code><a href="prop_miss.html">prop_miss()</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+# works with group_by from dplyr
+library(dplyr)
+airquality %&gt;%
+  group_by(Month) %&gt;%
+  miss_case_summary()
+
+miss_case_summary(airquality)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>naniar</em> version 0.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

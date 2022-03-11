@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Deploy a Plumber API</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for deployAPI {rsconnect}"><tr><td>deployAPI {rsconnect}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Deploy a Plumber API</h2>
+
+<h3>Description</h3>
+
+<p>Deploys an application consisting of plumber API routes. The given directory
+must contain a script returning a <code>plumb</code> object or a plumber API definition.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+deployAPI(api, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>api</code></td>
+<td>
+<p>Path to the API project directory. Must contain either
+<code>entrypoint.R</code> or <code>plumber.R</code></p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Additional arguments to <code><a href="deployApp.html">deployApp()</a></code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Deploy a plumber API definition by either supplying a directory
+containing <code>plumber.R</code> (an API definition) or <code>entrypoint.R</code> that returns a
+<code>plumb</code> object created by <code>plumber::plumb()</code>. See the plumber documentation
+for more information.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>Other Deployment functions: 
+<code><a href="applications.html">applications</a>()</code>,
+<code><a href="deployApp.html">deployApp</a>()</code>,
+<code><a href="deployDoc.html">deployDoc</a>()</code>,
+<code><a href="deploySite.html">deploySite</a>()</code>,
+<code><a href="deployTFModel.html">deployTFModel</a>()</code>
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>rsconnect</em> version 0.8.26 <a href="00Index.html">Index</a>]</div>
+</body></html>

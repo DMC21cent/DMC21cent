@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Put a few rows of a table into one category</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for group_rows {kableExtra}"><tr><td>group_rows {kableExtra}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Put a few rows of a table into one category</h2>
+
+<h3>Description</h3>
+
+<p>Group a few rows in a table together under a label.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+group_rows(kable_input, group_label = NULL, start_row = NULL,
+  end_row = NULL, index = NULL,
+  label_row_css = "border-bottom: 1px solid;",
+  latex_gap_space = "0.3em", escape = TRUE, latex_align = "l",
+  colnum = NULL, bold = TRUE, italic = FALSE, hline_before = FALSE,
+  hline_after = FALSE, extra_latex_after = NULL, indent = TRUE)
+
+pack_rows(kable_input, group_label = NULL, start_row = NULL,
+  end_row = NULL, index = NULL,
+  label_row_css = "border-bottom: 1px solid;",
+  latex_gap_space = "0.3em", escape = TRUE, latex_align = "l",
+  colnum = NULL, bold = TRUE, italic = FALSE, hline_before = FALSE,
+  hline_after = FALSE, extra_latex_after = NULL, indent = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>kable_input</code></td>
+<td>
+<p>Output of <code>knitr::kable()</code> with <code>format</code> specified</p>
+</td></tr>
+<tr valign="top"><td><code>group_label</code></td>
+<td>
+<p>A character string for the name of the group</p>
+</td></tr>
+<tr valign="top"><td><code>start_row</code></td>
+<td>
+<p>A numeric value that tells the function in which row the
+group starts. Note that the counting excludes header rows and other group
+labeling rows</p>
+</td></tr>
+<tr valign="top"><td><code>end_row</code></td>
+<td>
+<p>A numeric value that tells the function in which row the group
+ends.</p>
+</td></tr>
+<tr valign="top"><td><code>index</code></td>
+<td>
+<p>A named vector providing the index for robust row-grouping tasks.
+Basically, you can use it in the same way as <code>add_header_above()</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>label_row_css</code></td>
+<td>
+<p>A character string for any customized css used for the
+labeling row. By default, the labeling row will have a solid black line
+underneath. Only useful for HTML documents.</p>
+</td></tr>
+<tr valign="top"><td><code>latex_gap_space</code></td>
+<td>
+<p>A character value telling LaTeX how large the gap
+between the previous row and the group labeling row. Only useful for LaTeX
+documents.</p>
+</td></tr>
+<tr valign="top"><td><code>escape</code></td>
+<td>
+<p>A T/F value showing whether special characters should be
+escaped.</p>
+</td></tr>
+<tr valign="top"><td><code>latex_align</code></td>
+<td>
+<p>Adjust justification of group_label in latex only. Value should be &quot;c&quot; for
+centered on row, &quot;r&quot; for right justification, or &quot;l&quot; for left justification. Default
+Value is &quot;l&quot;  If using html, the alignment can be set by using the label_row_css
+parameter.</p>
+</td></tr>
+<tr valign="top"><td><code>colnum</code></td>
+<td>
+<p>A numeric that determines how many columns the text should span.
+The default setting will have the text span the entire length.</p>
+</td></tr>
+<tr valign="top"><td><code>bold</code></td>
+<td>
+<p>A T/F value to control whether the text should be bolded.</p>
+</td></tr>
+<tr valign="top"><td><code>italic</code></td>
+<td>
+<p>A T/F value to control whether the text should to be emphasized.</p>
+</td></tr>
+<tr valign="top"><td><code>hline_before</code></td>
+<td>
+<p>A T/F value that addes a horizontal line before the group_row label.  Default
+value is False.</p>
+</td></tr>
+<tr valign="top"><td><code>hline_after</code></td>
+<td>
+<p>A replicate of <code>hline.after</code> in xtable. It
+addes a hline after the row</p>
+</td></tr>
+<tr valign="top"><td><code>extra_latex_after</code></td>
+<td>
+<p>Extra LaTeX text to be added after the row.</p>
+</td></tr>
+<tr valign="top"><td><code>indent</code></td>
+<td>
+<p>A T?F value to control whether list items are indented.</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+x &lt;- knitr::kable(head(mtcars), "html")
+# Put Row 2 to Row 5 into a Group and label it as "Group A"
+pack_rows(x, "Group A", 2, 5)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>kableExtra</em> version 1.1.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

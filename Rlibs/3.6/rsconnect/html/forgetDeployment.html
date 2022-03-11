@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Forget Application Deployment</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for forgetDeployment {rsconnect}"><tr><td>forgetDeployment {rsconnect}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Forget Application Deployment</h2>
+
+<h3>Description</h3>
+
+<p>Forgets about an application deployment. This is useful if the application
+has been deleted on the server, or the local deployment information needs to
+be reset.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+forgetDeployment(
+  appPath = getwd(),
+  name = NULL,
+  account = NULL,
+  server = NULL,
+  dryRun = FALSE,
+  force = !interactive()
+)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>appPath</code></td>
+<td>
+<p>The path to the content that was deployed, either a directory
+or an individual document.</p>
+</td></tr>
+<tr valign="top"><td><code>name</code></td>
+<td>
+<p>The name of the content that was deployed (optional)</p>
+</td></tr>
+<tr valign="top"><td><code>account</code></td>
+<td>
+<p>The name of the account to which the content was deployed
+(optional)</p>
+</td></tr>
+<tr valign="top"><td><code>server</code></td>
+<td>
+<p>The name of the server to which the content was deployed
+(optional)</p>
+</td></tr>
+<tr valign="top"><td><code>dryRun</code></td>
+<td>
+<p>Set to TRUE to preview the files/directories to be removed
+instead of actually removing them. Defaults to FALSE.</p>
+</td></tr>
+<tr valign="top"><td><code>force</code></td>
+<td>
+<p>Set to TRUE to remove files and directories without prompting.
+Defaults to FALSE in interactive sessions.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>This method removes from disk the file containing deployment
+metadata. If &quot;name&quot;, &quot;account&quot;, and &quot;server&quot; are all NULL, then all of the
+deployments for the application are forgotten; otherwise, only the
+specified deployment is forgotten.
+</p>
+
+
+<h3>Value</h3>
+
+<p>NULL, invisibly.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>rsconnect</em> version 0.8.26 <a href="00Index.html">Index</a>]</div>
+</body></html>

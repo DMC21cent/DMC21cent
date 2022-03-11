@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Scoped variants of 'impute_mean'</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for scoped-impute_mean {naniar}"><tr><td>scoped-impute_mean {naniar}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Scoped variants of <code>impute_mean</code></h2>
+
+<h3>Description</h3>
+
+<p><code>impute_mean</code> imputes the mean for a vector. To get it to work on all
+variables, use <code>impute_mean_all</code>. To only impute variables
+that satisfy a specific condition, use the scoped variants,
+<code>impute_below_at</code>, and <code>impute_below_if</code>. To use <code>_at</code> effectively,
+you must know that <code>_at`` affects variables selected with a character vector, or with </code>vars()'.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+impute_mean_all(.tbl)
+
+impute_mean_at(.tbl, .vars)
+
+impute_mean_if(.tbl, .predicate)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>.tbl</code></td>
+<td>
+<p>a data.frame</p>
+</td></tr>
+<tr valign="top"><td><code>.vars</code></td>
+<td>
+<p>variables to impute</p>
+</td></tr>
+<tr valign="top"><td><code>.predicate</code></td>
+<td>
+<p>variables to impute</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>an dataset with values imputed
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# select variables starting with a particular string.
+library(dplyr)
+impute_mean_all(airquality)
+
+impute_mean_at(airquality,
+               .vars = c("Ozone", "Solar.R"))
+
+impute_mean_at(airquality,
+                .vars = vars(Ozone))
+
+impute_mean_if(airquality,
+                .predicate = is.numeric)
+
+## Not run: 
+library(ggplot2)
+airquality %&gt;%
+  bind_shadow() %&gt;%
+  impute_mean_all() %&gt;%
+  add_label_shadow() %&gt;%
+  ggplot(aes(x = Ozone,
+             y = Solar.R,
+             colour = any_missing)) +
+         geom_point()
+
+## End(Not run)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>naniar</em> version 0.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

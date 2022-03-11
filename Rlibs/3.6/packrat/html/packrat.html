@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Packrat: Reproducible dependency management</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for packrat {packrat}"><tr><td>packrat {packrat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Packrat: Reproducible dependency management</h2>
+
+<h3>Description</h3>
+
+<p>Packrat is a tool for managing the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> packages your project depends on in
+an isolated, portable, and reproducible way.
+</p>
+
+
+<h3>Details</h3>
+
+<p>Use packrat to make your <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> projects more:
+</p>
+
+<ul>
+<li> <p><strong>Isolated</strong>: Installing a new or updated package for one project
+won't break your other projects, and vice versa. That's because packrat gives
+each project its own private package library.
+</p>
+</li>
+<li> <p><strong>Portable</strong>: Easily transport your projects from one computer to
+another, even across different platforms. Packrat makes it easy to install the
+packages your project depends on.
+</p>
+</li>
+<li> <p><strong>Reproducible</strong>: Packrat records the exact package versions you
+depend on, and ensures those exact versions are the ones that get installed
+wherever you go.</p>
+</li></ul>
+
+<p>Use <code><a href="init.html">init</a></code> to create a new packrat project,
+<code><a href="snapshot.html">snapshot</a></code> to record changes to your project's library, and
+<code><a href="restore.html">restore</a></code> to recreate your library the way it was the last time you
+(or anyone!) took a snapshot.
+</p>
+<p>Using these simple functions and sharing packrat's files lets you collaborate
+in a shared, consistent environment with others as your project grows and
+changes, and provides an easy way to share your results when you're done.
+</p>
+
+
+<h3>Anatomy of a packrat project</h3>
+
+<p>A packrat project contains a few extra files and directories. The
+<code><a href="init.html">init</a></code> function creates these files for you, if they don't
+already exist.
+</p>
+
+<dl>
+<dt><code>packrat/lib/</code></dt><dd><p>Private package library for this project.</p>
+</dd>
+<dt><code>packrat/src/</code></dt><dd><p>Source packages of all the dependencies that
+packrat has been made aware of.</p>
+</dd>
+<dt><code>packrat/packrat.lock</code></dt><dd><p>Lists the precise package versions that were used
+to satisfy dependencies, including dependencies of dependencies. (This file
+should never be edited by hand!)</p>
+</dd>
+<dt><code>.Rprofile</code></dt><dd><p>Directs <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> to use the private package
+library (when it is started from the project directory).</p>
+</dd>
+</dl>
+
+
+
+<h3>Using packrat with version control</h3>
+
+<p>Packrat is designed to work hand in hand with Git, Subversion, or any other
+version control system. Be sure to check in the <code>.Rprofile</code>,
+<code>packrat.lock</code> files, and everything under
+<code>packrat/src/</code>. You can tell your VCS to ignore <code>packrat/lib/</code> (or
+feel free to check it in if you don't mind taking up some extra space in your
+repository).
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>RStudio, Inc.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+# Create a new packrat project from an existing directory of \R code
+init()
+
+# Install a package and take a snapshot of the new state of the library
+install.packages("TTR")
+snapshot()
+
+# Accidentally remove a package and restore to add it back
+remove.packages("TTR")
+restore()
+
+## End(Not run)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>packrat</em> version 0.5.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

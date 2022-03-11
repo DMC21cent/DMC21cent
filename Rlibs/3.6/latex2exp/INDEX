@@ -1,0 +1,16 @@
+TeX                     Converts a LaTeX string to a 'plotmath'
+                        expression.
+latex2exp               Converts a LaTeX string to a 'plotmath'
+                        expression. Deprecated; use 'TeX' instead.
+latex2exp_examples      Plots a number of example LaTeX string, as
+                        parsed by 'TeX'.
+latex2exp_supported     Returns a list of all supported LaTeX symbols
+                        and expressions that can be converted with
+                        'latex2exp'.
+plot.expression         Plots an expression on the current graphical
+                        device.
+print.latextoken        Prints out a parsed LaTeX object, as returned
+                        by TeX(..., output='ast').
+toString.latextoken     Converts a token created by TeX() to a string,
+                        later to be parsed into an expression (for
+                        internal use).

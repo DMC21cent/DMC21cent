@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Pedestrian count information around Melbourne for 2016</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for pedestrian {naniar}"><tr><td>pedestrian {naniar}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Pedestrian count information around Melbourne for 2016</h2>
+
+<h3>Description</h3>
+
+<p>This dataset contains hourly counts of pedestrians from 4 sensors around
+Melbourne: Birrarung Marr, Bourke Street Mall, Flagstaff station, and
+Spencer St-Collins St (south), recorded from January 1st 2016 at 00:00:00
+to December 31st 2016 at 23:00:00. The data is made free and publicly
+available from <a href="https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp">https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp</a>
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+data(pedestrian)
+</pre>
+
+
+<h3>Format</h3>
+
+<p>A tibble with 37,700 rows and 9 variables:
+</p>
+
+<dl>
+<dt>hourly_counts</dt><dd><p>(integer) the number of pedestrians counted at that sensor
+at that time</p>
+</dd>
+<dt>date_time</dt><dd><p>(POSIXct, POSIXt) The time that the count was taken</p>
+</dd>
+<dt>year</dt><dd><p>(integer) Year of record</p>
+</dd>
+<dt>month</dt><dd><p>(factor) Month of record as an ordered factor (1 = January, 12 =
+December)</p>
+</dd>
+<dt>month_day</dt><dd><p>(integer) Full day of the month</p>
+</dd>
+<dt>week_day</dt><dd><p>(factor) Full day of the week as an ordered factor (1 = Sunday,
+7 = Saturday)</p>
+</dd>
+<dt>hour</dt><dd><p>(integer) The hour of the day in 24 hour format</p>
+</dd>
+<dt>sensor_id</dt><dd><p>(integer) the id of the sensor</p>
+</dd>
+<dt>sensor_name</dt><dd><p>(character) the full name of the sensor</p>
+</dd>
+</dl>
+
+
+<h3>Source</h3>
+
+<p><a href="https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp">https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+# explore the missingness with vis_miss
+library(naniar)
+
+vis_miss(pedestrian)
+
+# Look at the missingness in the variables
+miss_var_summary(pedestrian)
+
+# There is only missingness in hourly_counts
+# Look at the missingness over a rolling window
+library(ggplot2)
+gg_miss_span(pedestrian, hourly_counts, span_every = 3000)
+
+## End(Not run)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>naniar</em> version 0.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

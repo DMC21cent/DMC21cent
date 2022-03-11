@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create a Linter</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for linter {rsconnect}"><tr><td>linter {rsconnect}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Create a Linter</h2>
+
+<h3>Description</h3>
+
+<p>Generate a linter, which can identify errors or problematic regions in a
+project.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+linter(apply, takes, message, suggestion)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>apply</code></td>
+<td>
+<p>Function that, given the content of a file, returns the indices
+at which problems were found.</p>
+</td></tr>
+<tr valign="top"><td><code>takes</code></td>
+<td>
+<p>Function that, given a set of paths, returns the subset of
+paths that this linter uses.</p>
+</td></tr>
+<tr valign="top"><td><code>message</code></td>
+<td>
+<p>Function that, given content and lines, returns an
+informative message for the user. Typically generated with
+<code><a href="makeLinterMessage.html">makeLinterMessage()</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>suggestion</code></td>
+<td>
+<p>String giving a prescribed fix for the linted problem.</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+addLinter("no.capitals", linter(
+
+  ## Identify lines containing capital letters -- either by name or by index
+  apply = function(content, ...) {
+    grep("[A-Z]", content)
+  },
+
+  ## Only use this linter on R files (paths ending with .r or .R)
+  takes = function(paths) {
+    grep("[rR]$", paths)
+  },
+
+  # Use the default message constructor
+  message = function(content, lines, ...) {
+    makeLinterMessage("Capital letters found on the following lines", content, lines)
+  },
+
+  # Give a suggested prescription
+  suggest = "Do not use capital letters in these documents."
+))
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rsconnect</em> version 0.8.26 <a href="00Index.html">Index</a>]</div>
+</body></html>

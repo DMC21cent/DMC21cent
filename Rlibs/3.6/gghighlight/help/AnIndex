@@ -1,0 +1,8 @@
+gghighlight-package	gghighlight-package
+aes	reexports
+gghighlight	gghighlight
+gghighlight-old	gghighlight-old
+gghighlight_line	gghighlight-old
+gghighlight_point	gghighlight-old
+n	reexports
+reexports	reexports

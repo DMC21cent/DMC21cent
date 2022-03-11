@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Impute data with values shifted 10% below range.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for impute_below_all {naniar}"><tr><td>impute_below_all {naniar}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Impute data with values shifted 10% below range.</h2>
+
+<h3>Description</h3>
+
+<p>It can be useful in exploratory graphics to impute data outside the range of
+the data. <code>impute_below_all</code> imputes all variables with missings to have
+values 10
+values adds a new string or label.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+impute_below_all(.tbl, prop_below = 0.1, jitter = 0.05, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>.tbl</code></td>
+<td>
+<p>a data.frame</p>
+</td></tr>
+<tr valign="top"><td><code>prop_below</code></td>
+<td>
+<p>the degree to shift the values. default is</p>
+</td></tr>
+<tr valign="top"><td><code>jitter</code></td>
+<td>
+<p>the amount of jitter to add. default is 0.05</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>additional arguments</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>an dataset with values imputed
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+# you can impute data like so:
+airquality %&gt;%
+  impute_below_all()
+
+# However, this does not show you WHERE the missing values are.
+# to keep track of them, you want to use `bind_shadow()` first.
+
+airquality %&gt;%
+  bind_shadow() %&gt;%
+  impute_below_all()
+
+# This identifies where the missing values are located, which means you
+# can do things like this:
+
+## Not run: 
+library(ggplot2)
+airquality %&gt;%
+  bind_shadow() %&gt;%
+  impute_below_all() %&gt;%
+  # identify where there are missings across rows.
+  add_label_shadow() %&gt;%
+  ggplot(aes(x = Ozone,
+             y = Solar.R,
+             colour = any_missing)) +
+  geom_point()
+# Note that this ^^ is a long version of `geom_miss_point()`.
+
+## End(Not run)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>naniar</em> version 0.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

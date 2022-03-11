@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Show Application Metrics</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for showMetrics {rsconnect}"><tr><td>showMetrics {rsconnect}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Show Application Metrics</h2>
+
+<h3>Description</h3>
+
+<p>Show application metrics of a currently deployed application
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+showMetrics(
+  metricSeries,
+  metricNames,
+  appDir = getwd(),
+  appName = NULL,
+  account = NULL,
+  server = NULL,
+  from = NULL,
+  until = NULL,
+  interval = NULL
+)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>metricSeries</code></td>
+<td>
+<p>Metric series to query. Refer to the
+<a href="https://docs.rstudio.com/shinyapps.io/metrics.html#ApplicationMetrics">shinyapps.io documentation</a>
+for available series.</p>
+</td></tr>
+<tr valign="top"><td><code>metricNames</code></td>
+<td>
+<p>Metric names in the series to query. Refer to the
+<a href="https://docs.rstudio.com/shinyapps.io/metrics.html#ApplicationMetrics">shinyapps.io documentation</a>
+for available metrics.</p>
+</td></tr>
+<tr valign="top"><td><code>appDir</code></td>
+<td>
+<p>Directory containing application. Defaults to
+current working directory.</p>
+</td></tr>
+<tr valign="top"><td><code>appName</code></td>
+<td>
+<p>Name of application</p>
+</td></tr>
+<tr valign="top"><td><code>account</code></td>
+<td>
+<p>Account name. If a single account is registered on the
+system then this parameter can be omitted.</p>
+</td></tr>
+<tr valign="top"><td><code>server</code></td>
+<td>
+<p>Server name. Required only if you use the same account name on
+multiple servers.</p>
+</td></tr>
+<tr valign="top"><td><code>from</code></td>
+<td>
+<p>Date range starting timestamp (Unix timestamp or relative time
+delta such as &quot;2d&quot; or &quot;3w&quot;).</p>
+</td></tr>
+<tr valign="top"><td><code>until</code></td>
+<td>
+<p>Date range ending timestamp (Unix timestamp or relative time
+delta such as &quot;2d&quot; or &quot;3w&quot;).</p>
+</td></tr>
+<tr valign="top"><td><code>interval</code></td>
+<td>
+<p>Summarization interval. Data points at intervals less then this
+will be grouped. (Relative time delta e.g. &quot;120s&quot; or &quot;1h&quot; or &quot;30d&quot;).</p>
+</td></tr>
+</table>
+
+
+<h3>Note</h3>
+
+<p>This function only works for ShinyApps servers.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>rsconnect</em> version 0.8.26 <a href="00Index.html">Index</a>]</div>
+</body></html>

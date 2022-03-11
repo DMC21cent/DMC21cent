@@ -1,0 +1,66 @@
+"0","knitr::opts_chunk$set("
+"0","  collapse = TRUE,"
+"0","  echo = TRUE,"
+"0","  eval = TRUE,"
+"0","  warning = FALSE,"
+"0","  message = FALSE,"
+"0","  fig.width=10,"
+"0","  fig.height=5,"
+"0"," # dpi = 85,"
+"0","  # out.width = ""100%"","
+"0","  # out.height = ""50%"","
+"0","  comment = ""#>"""
+"0",")"
+"0","library(dplyr)"
+"2","
+Attaching package: ‘dplyr’
+
+"
+"2","The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+"
+"2","The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+"
+"0","library(ggplot2)"
+"0","library(scales)"
+"0","library(plotly)"
+"2","Registered S3 method overwritten by 'data.table':
+  method           from
+  print.data.table     
+"
+"2","Registered S3 method overwritten by 'htmlwidgets':
+  method           from         
+  print.htmlwidget tools:rstudio
+"
+"2","
+Attaching package: ‘plotly’
+
+"
+"2","The following object is masked from ‘package:ggplot2’:
+
+    last_plot
+
+"
+"2","The following object is masked from ‘package:DMC21cent’:
+
+    last_plot
+
+"
+"2","The following object is masked from ‘package:stats’:
+
+    filter
+
+"
+"2","The following object is masked from ‘package:graphics’:
+
+    layout
+
+"
+"0","devtools::load_all()"
+"2","[36mℹ[39m Loading [34m[34mDMC21cent[34m[39m
+"

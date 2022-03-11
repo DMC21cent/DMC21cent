@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Label the legend with the percent of missing data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for miss_guide_label {visdat}"><tr><td>miss_guide_label {visdat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Label the legend with the percent of missing data</h2>
+
+<h3>Description</h3>
+
+<p><code>miss_guide_label</code> is an internal function for vis_miss to label the legend.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+miss_guide_label(x)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>is a dataframe passed from vis_miss(x).</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a tibble with two columns <code>p_miss_lab</code> and <code>p_pres_lab</code>,
+containing the labels to use for present and missing. A dataframe is
+returned because I think it is a good style habit compared to a list.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>visdat</em> version 0.5.3 <a href="00Index.html">Index</a>]</div>
+</body></html>

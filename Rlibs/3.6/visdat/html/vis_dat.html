@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Visualises a data.frame to tell you what it contains.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for vis_dat {visdat}"><tr><td>vis_dat {visdat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Visualises a data.frame to tell you what it contains.</h2>
+
+<h3>Description</h3>
+
+<p><code>vis_dat</code> gives you an at-a-glance ggplot object of what is inside a
+dataframe. Cells are coloured according to what class they are and whether
+the values are missing. As <code>vis_dat</code> returns a ggplot object, it is very
+easy to customize and change labels, and customize the plot
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+vis_dat(x, sort_type = TRUE, palette = "default",
+  warn_large_data = TRUE, large_data_size = 9e+05)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>a data.frame object</p>
+</td></tr>
+<tr valign="top"><td><code>sort_type</code></td>
+<td>
+<p>logical TRUE/FALSE. When TRUE (default), it sorts by the
+type in the column to make it easier to see what is in the data</p>
+</td></tr>
+<tr valign="top"><td><code>palette</code></td>
+<td>
+<p>character &quot;default&quot;, &quot;qual&quot; or &quot;cb_safe&quot;. &quot;default&quot; (the
+default) provides the stock ggplot scale for separating the colours.
+&quot;qual&quot; uses an experimental qualitative colour scheme for providing
+distinct colours for each Type. &quot;cb_safe&quot; is a set of colours that are
+appropriate for those with colourblindness. &quot;qual&quot; and &quot;cb_safe&quot; are drawn
+from http://colorbrewer2.org/.</p>
+</td></tr>
+<tr valign="top"><td><code>warn_large_data</code></td>
+<td>
+<p>logical - warn if there is large data? Default is TRUE
+see note for more details</p>
+</td></tr>
+<tr valign="top"><td><code>large_data_size</code></td>
+<td>
+<p>integer default is 900000, this can be changed. See
+note for more details</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p><code>ggplot2</code> object displaying the type of values in the data frame and
+the position of any missing values.
+</p>
+
+
+<h3>Note</h3>
+
+<p>Some datasets might be too large to plot, sometimes creating a blank
+plot - if this happens, I would recommend downsampling the data, either
+looking at the first 1,000 rows or by taking a random sample. This means
+that you won't get the same &quot;look&quot; at the data, but it is better than
+a blank plot! See example code for suggestions on doing this.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="vis_miss.html">vis_miss()</a></code> <code><a href="vis_guess.html">vis_guess()</a></code> <code><a href="vis_expect.html">vis_expect()</a></code> <code><a href="vis_cor.html">vis_cor()</a></code>
+<code><a href="vis_compare.html">vis_compare()</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+vis_dat(airquality)
+
+## Not run: 
+# experimental colourblind safe palette
+vis_dat(airquality, palette = "cb_safe")
+vis_dat(airquality, palette = "qual")
+
+# if you have a large dataset, you might want to try downsampling:
+library(nycflight13)
+library(dplyr)
+flights %&gt;%
+  sample_n(1000) %&gt;%
+  vis_dat()
+
+flights %&gt;%
+  slice(1:1000) %&gt;%
+  vis_dat()
+
+
+## End(Not run)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>visdat</em> version 0.5.3 <a href="00Index.html">Index</a>]</div>
+</body></html>

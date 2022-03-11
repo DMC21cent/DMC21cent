@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Shift missing values to facilitate missing data...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for shadow_shift {naniar}"><tr><td>shadow_shift {naniar}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Shift missing values to facilitate missing data exploration/visualisation</h2>
+
+<h3>Description</h3>
+
+<p><code>shadow_shift</code> transforms missing values to facilitate visualisation, and has
+different behaviour for different types of variables. For numeric
+variables, the values are shifted to 10
+variable plus some jittered noise, to separate repeated values, so that
+missing values can be visualised along with the rest of the data.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+shadow_shift(x, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>a variable of interest to shift</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>extra arguments to pass</p>
+</td></tr>
+</table>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="add_shadow_shift.html">add_shadow_shift()</a></code> <code><a href="cast_shadow_shift.html">cast_shadow_shift()</a></code> <code><a href="cast_shadow_shift_label.html">cast_shadow_shift_label()</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+airquality$Ozone
+shadow_shift(airquality$Ozone)
+library(dplyr)
+airquality %&gt;%
+    mutate(Ozone_shift = shadow_shift(Ozone))
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>naniar</em> version 0.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

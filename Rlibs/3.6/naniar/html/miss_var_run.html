@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Find the number of missing and complete values in a single...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for miss_var_run {naniar}"><tr><td>miss_var_run {naniar}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Find the number of missing and complete values in a single run</h2>
+
+<h3>Description</h3>
+
+<p>It us useful to find the number of missing values that occur in a single run.
+The function, <code>miss_var_run()</code>, returns a dataframe with the column names
+&quot;run_length&quot; and &quot;is_na&quot;, which describe the length of the run, and
+whether that run describes a missing value.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+miss_var_run(data, var)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>data.frame</p>
+</td></tr>
+<tr valign="top"><td><code>var</code></td>
+<td>
+<p>a bare variable name</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>dataframe with column names &quot;run_length&quot; and &quot;is_na&quot;, which describe
+the length of the run, and whether that run describes a missing value.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="pct-miss-complete-case.html">pct_miss_case()</a></code> <code><a href="prop-miss-complete-case.html">prop_miss_case()</a></code> <code><a href="pct-miss-complete-var.html">pct_miss_var()</a></code> <code><a href="prop-miss-complete-var.html">prop_miss_var()</a></code> <code><a href="pct-miss-complete-case.html">pct_complete_case()</a></code> <code><a href="prop-miss-complete-case.html">prop_complete_case()</a></code> <code><a href="pct-miss-complete-var.html">pct_complete_var()</a></code> <code><a href="prop-miss-complete-var.html">prop_complete_var()</a></code> <code><a href="miss_prop_summary.html">miss_prop_summary()</a></code> <code><a href="miss_case_summary.html">miss_case_summary()</a></code> <code><a href="miss_case_table.html">miss_case_table()</a></code> <code><a href="miss_summary.html">miss_summary()</a></code> <code><a href="miss-complete-var-prop.html">miss_var_prop()</a></code> <code><a href="miss_var_run.html">miss_var_run()</a></code> <code><a href="miss_var_span.html">miss_var_span()</a></code> <code><a href="miss_var_summary.html">miss_var_summary()</a></code> <code><a href="miss_var_table.html">miss_var_table()</a></code> <code><a href="n_complete.html">n_complete()</a></code> <code><a href="n_complete_row.html">n_complete_row()</a></code> <code><a href="n_miss.html">n_miss()</a></code> <code><a href="n_miss_row.html">n_miss_row()</a></code> <code><a href="pct_complete.html">pct_complete()</a></code> <code><a href="pct_miss.html">pct_miss()</a></code> <code><a href="prop_complete.html">prop_complete()</a></code> <code><a href="prop_complete_row.html">prop_complete_row()</a></code> <code><a href="prop_miss.html">prop_miss()</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+miss_var_run(pedestrian, hourly_counts)
+
+library(dplyr)
+
+# find the number of runs missing/complete for each month
+
+pedestrian %&gt;%
+  group_by(month) %&gt;%
+  miss_var_run(hourly_counts)
+
+library(ggplot2)
+
+# explore the number of missings in a given run
+miss_var_run(pedestrian, hourly_counts) %&gt;%
+  filter(is_na == "missing") %&gt;%
+  count(run_length) %&gt;%
+  ggplot(aes(x = run_length,
+             y = n)) +
+      geom_col()
+
+# look at the number of missing values and the run length of these.
+miss_var_run(pedestrian, hourly_counts) %&gt;%
+  ggplot(aes(x = is_na,
+             y = run_length)) +
+      geom_boxplot()
+
+# using group_by
+ pedestrian %&gt;%
+   group_by(month) %&gt;%
+   miss_var_run(hourly_counts)
+
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>naniar</em> version 0.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

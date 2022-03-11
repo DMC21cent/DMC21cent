@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Managing External Libraries</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for packrat-external {packrat}"><tr><td>packrat-external {packrat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Managing External Libraries</h2>
+
+<h3>Description</h3>
+
+<p>These functions provide a mechanism for (temporarily) using packages outside
+of the packrat private library. The packages are searched within the 'default'
+libraries; that is, the libraries that would be available upon launching a new
+<span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> session.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+with_extlib(packages = NULL, expr, envir = parent.frame())
+
+extlib(packages)
+
+user_lib()
+
+packrat_lib()
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>packages</code></td>
+<td>
+<p>An optional set of package names (as a character
+vector) to load for the duration of evaluation of <code>expr</code>.
+Whether <code>packages</code> is provided or <code>NULL</code> (the
+default), <code>expr</code> is evaluated in an environment where the
+external library path is in place, not the local (packrat)
+library path.</p>
+</td></tr>
+<tr valign="top"><td><code>expr</code></td>
+<td>
+<p>An <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> expression.</p>
+</td></tr>
+<tr valign="top"><td><code>envir</code></td>
+<td>
+<p>An environment in which the expression is evaluated.</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+with_extlib("lattice", xyplot(1 ~ 1))
+with_extlib(expr = packageVersion("lattice"))
+# since devtools requires roxygen2 &gt;= 5.0.0 for this step, this
+# should fail unless roxygen2 is available in the packrat lib.loc
+with_extlib("devtools", load_all("path/to/project"))
+# this method will work given roxygen2 is installed in the
+# non-packrat lib.loc with devtools
+with_extlib(expr = devtools::load_all("path/to/project"))
+
+## End(Not run)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>packrat</em> version 0.5.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

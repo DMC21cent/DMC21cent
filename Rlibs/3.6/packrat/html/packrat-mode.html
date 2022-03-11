@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Packrat Mode</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for packrat-mode {packrat}"><tr><td>packrat-mode {packrat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Packrat Mode</h2>
+
+<h3>Description</h3>
+
+<p>Use these functions to switch <code>packrat</code> mode on and off. When within
+<code>packrat</code> mode, the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> session will use the private library generated
+for the current project.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+packrat_mode(on = NULL, project = NULL,
+  auto.snapshot = get_opts("auto.snapshot"), clean.search.path = TRUE)
+
+on(project = NULL, auto.snapshot = get_opts("auto.snapshot"),
+  clean.search.path = TRUE, print.banner = TRUE)
+
+off(project = NULL, print.banner = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>on</code></td>
+<td>
+<p>Turn packrat mode on (<code>TRUE</code>) or off (<code>FALSE</code>). If omitted, packrat mode
+will be toggled.</p>
+</td></tr>
+<tr valign="top"><td><code>project</code></td>
+<td>
+<p>The directory in which packrat mode is launched &ndash; this is
+where local libraries will be used and updated.</p>
+</td></tr>
+<tr valign="top"><td><code>auto.snapshot</code></td>
+<td>
+<p>Perform automatic, asynchronous snapshots?</p>
+</td></tr>
+<tr valign="top"><td><code>clean.search.path</code></td>
+<td>
+<p>Detach and unload any packages loaded from non-system
+libraries before entering packrat mode?</p>
+</td></tr>
+<tr valign="top"><td><code>print.banner</code></td>
+<td>
+<p>Print the packrat banner when entering / exiting packrat mode?
+The packrat banner informs you of the new packrat mode state, as well as the library
+path in use.</p>
+</td></tr>
+</table>
+
+<hr /><div style="text-align: center;">[Package <em>packrat</em> version 0.5.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Search and present different kinds of missing values</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for miss_scan_count {naniar}"><tr><td>miss_scan_count {naniar}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Search and present different kinds of missing values</h2>
+
+<h3>Description</h3>
+
+<p>Searching for different kinds of missing values is really annoying. If
+you have values like -99 in your data, when they shouldn't be there,
+or they should be encoded as missing, it can be difficult to ascertain
+if they are there, and if so, where they are. <code>miss_scan_count</code> makes it
+easier for users to search for particular occurrences of these values
+across their variables.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+miss_scan_count(data, search)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>data</p>
+</td></tr>
+<tr valign="top"><td><code>search</code></td>
+<td>
+<p>values to search for</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a dataframe of the occurrences of the values you searched for
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="pct-miss-complete-case.html">pct_miss_case()</a></code> <code><a href="prop-miss-complete-case.html">prop_miss_case()</a></code> <code><a href="pct-miss-complete-var.html">pct_miss_var()</a></code> <code><a href="prop-miss-complete-var.html">prop_miss_var()</a></code> <code><a href="pct-miss-complete-case.html">pct_complete_case()</a></code> <code><a href="prop-miss-complete-case.html">prop_complete_case()</a></code> <code><a href="pct-miss-complete-var.html">pct_complete_var()</a></code> <code><a href="prop-miss-complete-var.html">prop_complete_var()</a></code> <code><a href="miss_prop_summary.html">miss_prop_summary()</a></code> <code><a href="miss_case_summary.html">miss_case_summary()</a></code> <code><a href="miss_case_table.html">miss_case_table()</a></code> <code><a href="miss_summary.html">miss_summary()</a></code> <code><a href="miss-complete-var-prop.html">miss_var_prop()</a></code> <code><a href="miss_var_run.html">miss_var_run()</a></code> <code><a href="miss_var_span.html">miss_var_span()</a></code> <code><a href="miss_var_summary.html">miss_var_summary()</a></code> <code><a href="miss_var_table.html">miss_var_table()</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+dat_ms &lt;- tibble::tribble(~x,  ~y,    ~z,
+                         1,   "A",   -100,
+                         3,   "N/A", -99,
+                         NA,  NA,    -98,
+                         -99, "E",   -101,
+                         -98, "F",   -1)
+
+miss_scan_count(dat_ms,-99)
+miss_scan_count(dat_ms,c(-99,-98))
+miss_scan_count(dat_ms,c("-99","-98","N/A"))
+miss_scan_count(dat_ms,common_na_strings)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>naniar</em> version 0.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

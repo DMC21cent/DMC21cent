@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Show differences between the last snapshot and the library</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for status {packrat}"><tr><td>status {packrat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Show differences between the last snapshot and the library</h2>
+
+<h3>Description</h3>
+
+<p>Shows the differences between the project's packrat dependencies, its private
+package library, and its R scripts.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+status(project = NULL, lib.loc = libDir(project), quiet = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>project</code></td>
+<td>
+<p>The directory that contains the R project.</p>
+</td></tr>
+<tr valign="top"><td><code>lib.loc</code></td>
+<td>
+<p>The library to examine. Defaults to the private library
+associated with the project directory.</p>
+</td></tr>
+<tr valign="top"><td><code>quiet</code></td>
+<td>
+<p>Print detailed information about the packrat status to the console?</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>These differences are created when you use the normal R package management
+commands like <code><a href="../../utils/html/install.packages.html">install.packages</a></code>, <code><a href="../../utils/html/update.packages.html">update.packages</a></code>,
+and <code><a href="../../utils/html/remove.packages.html">remove.packages</a></code>. To bring these differences into packrat, you
+can use <code><a href="snapshot.html">snapshot</a></code>.
+</p>
+<p>Differences can also arise if one of your collaborators adds or removes
+packages from the packrat dependencies. In this case, you simply need to tell
+packrat to update your private package library using <code><a href="restore.html">restore</a></code>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Either <code>NULL</code> if a <code>packrat</code> project has not yet been
+initialized, or a (invisibly) a <code>data.frame</code> with components:
+</p>
+<table summary="R valueblock">
+<tr valign="top"><td><code>package</code></td>
+<td>
+<p>The package name,</p>
+</td></tr>
+<tr valign="top"><td><code>packrat.version</code></td>
+<td>
+<p>The package version used in the last snapshot,</p>
+</td></tr>
+<tr valign="top"><td><code>packrat.source</code></td>
+<td>
+<p>The location from which the package was obtained,</p>
+</td></tr>
+<tr valign="top"><td><code>library.version</code></td>
+<td>
+<p>The package version available in the local library,</p>
+</td></tr>
+<tr valign="top"><td><code>currently.used</code></td>
+<td>
+<p>Whether the package is used in any of the R code in the current project.</p>
+</td></tr>
+</table>
+
+<hr /><div style="text-align: center;">[Package <em>packrat</em> version 0.5.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

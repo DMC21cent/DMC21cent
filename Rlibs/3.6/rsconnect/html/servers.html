@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Server Management Functions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for servers {rsconnect}"><tr><td>servers {rsconnect}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Server Management Functions</h2>
+
+<h3>Description</h3>
+
+<p>Functions to manage the list of known servers to which
+<span class="pkg">rsconnect</span> can deploy and manage applications.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+servers(local = FALSE)
+
+discoverServers(quiet = FALSE)
+
+addConnectServer(url, name = NULL, certificate = NULL, quiet = FALSE)
+
+addServer(url, name = NULL, certificate = NULL, quiet = FALSE)
+
+removeServer(name)
+
+serverInfo(name)
+
+addServerCertificate(name, certificate, quiet = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>local</code></td>
+<td>
+<p>Return only local servers (i.e. not <code>shinyapps.io</code>)</p>
+</td></tr>
+<tr valign="top"><td><code>quiet</code></td>
+<td>
+<p>Suppress output and prompts where possible.</p>
+</td></tr>
+<tr valign="top"><td><code>url</code></td>
+<td>
+<p>Server's URL. Should look like <code style="white-space: pre;">http://servername/</code> or
+<code style="white-space: pre;">http://servername:port/</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>name</code></td>
+<td>
+<p>Optional nickname for the server. If none is given, the nickname
+is inferred from the server's hostname.</p>
+</td></tr>
+<tr valign="top"><td><code>certificate</code></td>
+<td>
+<p>Optional; a path a certificate file to be used when making
+SSL connections to the server. The file's contents are copied and stored by
+the <span class="pkg">rsconnect</span> package. Can also be a character vector containing the
+certificate's contents.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Register a server with <code>addServer</code> or <code>discoverServers</code> (the latter
+is useful only if your administrator has configured server autodiscovery).
+Once a server is registered, you can connect to an account on the server
+using <code><a href="connectUser.html">connectUser()</a></code>.
+</p>
+<p>The <code>servers</code> and <code>serverInfo</code> functions are provided for viewing
+previously registered servers.
+</p>
+<p>There is always at least one server registered (the <code>shinyapps.io</code>
+server)
+</p>
+
+
+<h3>Value</h3>
+
+<p><code>servers</code> returns a data frame with registered server names and URLs.
+<code>serverInfo</code> returns a list with details for a particular server.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+
+# register a local server
+addServer("http://myrsconnect/", "myserver")
+
+# list servers
+servers(local = TRUE)
+
+# connect to an account on the server
+connectUser(server = "myserver")
+
+## End(Not run)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rsconnect</em> version 0.8.26 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Visually compare two dataframes and see where they are...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for vis_compare {visdat}"><tr><td>vis_compare {visdat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Visually compare two dataframes and see where they are different.</h2>
+
+<h3>Description</h3>
+
+<p><code>vis_compare</code>, like the other <code>vis_*</code> families, gives an at-a-glance ggplot
+of a dataset, but in this case, hones in on visualising <strong>two</strong> different
+dataframes of the same dimension, so it takes two dataframes as arguments.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+vis_compare(df1, df2)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>df1</code></td>
+<td>
+<p>The first dataframe to compare</p>
+</td></tr>
+<tr valign="top"><td><code>df2</code></td>
+<td>
+<p>The second dataframe to compare to the first.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p><code>ggplot2</code> object displaying which values in each data frame are
+present in each other, and which are not.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="vis_miss.html">vis_miss()</a></code> <code><a href="vis_dat.html">vis_dat()</a></code> <code><a href="vis_guess.html">vis_guess()</a></code> <code><a href="vis_expect.html">vis_expect()</a></code> <code><a href="vis_cor.html">vis_cor()</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+# make a new dataset of iris that contains some NA values
+aq_diff &lt;- airquality
+aq_diff[1:10, 1:2] &lt;- NA
+vis_compare(airquality, aq_diff)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>visdat</em> version 0.5.3 <a href="00Index.html">Index</a>]</div>
+</body></html>

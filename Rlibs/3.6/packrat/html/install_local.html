@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Install a Package from a Local Repository</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for install_local {packrat}"><tr><td>install_local {packrat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Install a Package from a Local Repository</h2>
+
+<h3>Description</h3>
+
+<p>This function can be used to install a package from a local 'repository'; i.e.,
+a directory containing package tarballs and sources.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+install_local(pkgs, ..., lib = .libPaths()[1],
+  repos = get_opts("local.repos"))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>pkgs</code></td>
+<td>
+<p>A character vector of package names.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Optional arguments passed to <code><a href="install.html">install</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>lib</code></td>
+<td>
+<p>The library in which the package should be installed.</p>
+</td></tr>
+<tr valign="top"><td><code>repos</code></td>
+<td>
+<p>The local repositories to search for the package names specified.</p>
+</td></tr>
+</table>
+
+<hr /><div style="text-align: center;">[Package <em>packrat</em> version 0.5.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

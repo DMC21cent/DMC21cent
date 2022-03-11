@@ -1,0 +1,38 @@
+Type: Package
+Package: gghighlight
+Title: Highlight Lines and Points in 'ggplot2'
+Version: 0.3.2.9000
+Authors@R: 
+    person(given = "Hiroaki",
+           family = "Yutani",
+           role = c("aut", "cre"),
+           email = "yutani.ini@gmail.com",
+           comment = c(ORCID = "0000-0002-3385-7233"))
+Description: Make it easier to explore data with highlights.
+License: MIT + file LICENSE
+URL: https://github.com/yutannihilation/gghighlight/
+BugReports: https://github.com/yutannihilation/gghighlight/issues
+Depends: ggplot2 (>= 3.0.0), R (>= 3.2.0)
+Imports: dplyr (>= 1.0.0), ggrepel, lifecycle, purrr, rlang, tibble
+Suggests: knitr, rmarkdown, sf, testthat, vdiffr (>= 0.3.0)
+VignetteBuilder: knitr
+RdMacros: lifecycle
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Config/testthat/edition: 3
+RemoteType: github
+RemoteHost: api.github.com
+RemoteRepo: gghighlight
+RemoteUsername: yutannihilation
+RemoteRef: HEAD
+RemoteSha: 4bc54b152796a0631c6557ef936c328bcbf9b5b9
+GithubRepo: gghighlight
+GithubUsername: yutannihilation
+GithubRef: HEAD
+GithubSHA1: 4bc54b152796a0631c6557ef936c328bcbf9b5b9
+NeedsCompilation: no
+Packaged: 2022-02-14 20:39:31 UTC; mirshar1
+Author: Hiroaki Yutani [aut, cre] (<https://orcid.org/0000-0002-3385-7233>)
+Maintainer: Hiroaki Yutani <yutani.ini@gmail.com>
+Built: R 3.6.1; ; 2022-02-14 20:39:33 UTC; unix

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Upload a Package to a Local CRAN-like Repository</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for repos_upload {packrat}"><tr><td>repos_upload {packrat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Upload a Package to a Local CRAN-like Repository</h2>
+
+<h3>Description</h3>
+
+<p>Upload a Package to a Local CRAN-like Repository
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+repos_upload(package, to, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>package</code></td>
+<td>
+<p>Path to a package tarball. The tarball should be
+created by <code>R CMD build</code>; alternatively, it can be the path
+to a folder containing the source code for a package (which
+will then be built with <code>R CMD build</code>) and then uploaded
+to the local repository.</p>
+</td></tr>
+<tr valign="top"><td><code>to</code></td>
+<td>
+<p>The name of the CRAN-like repository. It (currently) must
+be a local (on-disk) CRAN repository.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Optional arguments passed to <code>R CMD build</code>.</p>
+</td></tr>
+</table>
+
+<hr /><div style="text-align: center;">[Package <em>packrat</em> version 0.5.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Initialize Packrat on a new or existing R project</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for init {packrat}"><tr><td>init {packrat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Initialize Packrat on a new or existing <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> project</h2>
+
+<h3>Description</h3>
+
+<p>Given a project directory, makes a new packrat project in the directory.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+init(project = ".", options = NULL, enter = TRUE, restart = enter,
+  infer.dependencies = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>project</code></td>
+<td>
+<p>The directory that contains the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> project.</p>
+</td></tr>
+<tr valign="top"><td><code>options</code></td>
+<td>
+<p>An <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> <code>list</code> of options, as specified in
+<code><a href="packrat-options.html">packrat-options</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>enter</code></td>
+<td>
+<p>Boolean, enter packrat mode for this project after finishing a init?</p>
+</td></tr>
+<tr valign="top"><td><code>restart</code></td>
+<td>
+<p>If <code>TRUE</code>, restart the R session after init.</p>
+</td></tr>
+<tr valign="top"><td><code>infer.dependencies</code></td>
+<td>
+<p>If <code>TRUE</code>, infer package dependencies by
+examining the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> code.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p><code>init</code> works as follows:
+</p>
+
+<ol>
+<li><p> Application dependencies are computed by examining the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> code
+throughout the project for <code>library</code> and <code>require</code> calls. You can
+opt out of this behavior by setting <code>infer.dependencies</code> to
+<code>FALSE</code>.
+</p>
+</li>
+<li><p> A snapshot is taken of the version of each package currently used by
+the project as described in <code><a href="snapshot.html">snapshot</a></code>, and each package's
+sources are downloaded.
+</p>
+</li>
+<li><p> A private library is created in the directory.
+</p>
+</li>
+<li><p> The snapshot is applied to the directory as described in
+<code><a href="restore.html">restore</a></code>. </p>
+</li></ol>
+<p> When <code>init</code> is finished, all the packages
+on which the project depends are installed in a new, private library located
+inside the project directory.
+</p>
+<p><strong>You must restart your <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> session in the given project directory after
+running <code>init</code> in order for the changes to take effect!</strong>
+</p>
+<p>When <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> is started in the directory, it will use the new, private library.
+Calls to <code><a href="../../base/html/library.html">require</a></code> and <code><a href="../../base/html/library.html">library</a></code> will load packages
+from the private library (except for 'base' or 'recommended' <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> packages,
+which are found in the system library), and functions such as <code><a href="../../utils/html/install.packages.html">install.packages</a></code>
+will modify that private library. You can sync this private library with
+packrat using <code><a href="snapshot.html">snapshot</a></code> and <code><a href="restore.html">restore</a></code>.
+</p>
+
+
+<h3>Note</h3>
+
+<p>The <code>restart</code> parameter will only result in a restart of R when the
+R environment packrat is running within makes available a restart function
+via <code>getOption("restart")</code>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><a href="packrat.html">packrat</a> for a description of the files created by
+<code>init</code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+
+## initialize a project using a local repository of packages
+packrat::init(options = list(local.repos = "~/projects/R"))
+
+
+## End(Not run)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>packrat</em> version 0.5.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

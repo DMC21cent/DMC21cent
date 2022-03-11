@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Automatically Enter Packrat Mode on Startup</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for packify {packrat}"><tr><td>packify {packrat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Automatically Enter Packrat Mode on Startup</h2>
+
+<h3>Description</h3>
+
+<p>Install/augment the <code>.Rprofile</code> in a project, so that all <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> sessions
+started in this directory enter <code>packrat mode</code>, and use the local
+project library.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+packify(project = NULL, quiet = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>project</code></td>
+<td>
+<p>The directory in which to install the <code>.Rprofile</code> file.</p>
+</td></tr>
+<tr valign="top"><td><code>quiet</code></td>
+<td>
+<p>Be chatty?</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>It is not normally necessary to call <code>packify</code> directly; these files are
+normally installed by <code><a href="init.html">init</a></code>. <code>packify</code> can be used to
+restore the files if they are missing (for instance, if they were not added to
+source control, or were accidentally removed).
+</p>
+<p>You'll need to restart <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> in the specified directory after running
+<code>packify</code> in order to start using the private package library.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>packrat</em> version 0.5.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

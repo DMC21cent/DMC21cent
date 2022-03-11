@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Add footnote</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for add_footnote {kableExtra}"><tr><td>add_footnote {kableExtra}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Add footnote</h2>
+
+<h3>Description</h3>
+
+<p>Add footnote to your favorite kable output.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+add_footnote(input, label = NULL, notation = "alphabet",
+  threeparttable = FALSE, escape = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>input</code></td>
+<td>
+<p>The direct output of your <code>kable</code> function or your last
+<code>kableExtra</code> function.</p>
+</td></tr>
+<tr valign="top"><td><code>label</code></td>
+<td>
+<p>A vector of footnotes you want to add. You don't need to add
+notations in your notes.</p>
+</td></tr>
+<tr valign="top"><td><code>notation</code></td>
+<td>
+<p>You can select the format of your footnote notation from
+<code>number</code>, <code>alphabet</code>, <code>symbol</code> and <code>none</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>threeparttable</code></td>
+<td>
+<p>Boolean value indicating if a
+<a href="https://www.ctan.org/pkg/threeparttable">threeparttable</a> scheme should
+be used.</p>
+</td></tr>
+<tr valign="top"><td><code>escape</code></td>
+<td>
+<p>Logical value controlling if the label needs to be escaped.
+Default is TRUE.</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+x &lt;- knitr::kable(head(mtcars), "html")
+add_footnote(x, c("footnote 1", "footnote 2"), notation = "symbol")
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>kableExtra</em> version 1.1.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

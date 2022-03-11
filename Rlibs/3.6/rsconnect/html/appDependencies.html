@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Detect Application Dependencies</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for appDependencies {rsconnect}"><tr><td>appDependencies {rsconnect}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Detect Application Dependencies</h2>
+
+<h3>Description</h3>
+
+<p>Recursively detect all package dependencies for an application. This function
+parses all .R files in the application directory to determine what packages
+the application depends on; and for each of those packages what other
+packages they depend on.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+appDependencies(appDir = getwd(), appFiles = NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>appDir</code></td>
+<td>
+<p>Directory containing application. Defaults to current working
+directory.</p>
+</td></tr>
+<tr valign="top"><td><code>appFiles</code></td>
+<td>
+<p>The files and directories to bundle and deploy (only if
+<code>upload = TRUE</code>). Can be <code>NULL</code>, in which case all the files in the
+directory containing the application are bundled, with the exception of
+any listed in an <code>.rcsignore</code> file. Takes precedence over
+<code>appFileManifest</code> if both are supplied.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Dependencies are determined by parsing application source code and
+looking for calls to <code>library</code>, <code>require</code>, <code>::</code>, and
+<code>:::</code>.
+</p>
+<p>Recursive dependencies are detected by examining the <code>Depends</code>,
+<code>Imports</code>, and <code>LinkingTo</code> fields of the packages immediately
+dependend on by the application.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Returns a data frame listing the package
+dependencies detected for the application: </p>
+
+<table summary="Rd table">
+<tr>
+ <td style="text-align: left;"> <code>package</code>
+</td><td style="text-align: left;"> Name of package </td>
+</tr>
+<tr>
+ <td style="text-align: left;"> <code>version</code> </td><td style="text-align: left;"> Version of package</td>
+</tr>
+<tr>
+ <td style="text-align: left;"> </td>
+</tr>
+
+</table>
+
+
+
+<h3>Note</h3>
+
+<p>Since the <code>Suggests</code> field is not included when determining
+recursive dependencies of packages, it's possible that not every package
+required to run your application will be detected.
+</p>
+<p>In this case, you can force a package to be included dependency by
+inserting call(s) to <code>require</code> within your source directory. This code
+need not actually execute, for example you could create a standalone file
+named <code>dependencies.R</code> with the following code: <br /> <br />
+<code>require(xts)</code> <br /> <code>require(colorspace)</code> <br />
+</p>
+<p>This will force the <code>xts</code> and <code>colorspace</code> packages to be
+installed along with the rest of your application when it is deployed.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><a href="rsconnectPackages.html">rsconnectPackages</a>(Using Packages with rsconnect)
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+
+# dependencies for the app in the current working dir
+appDependencies()
+
+# dependencies for an app in another directory
+appDependencies("~/projects/shiny/app1")
+
+## End(Not run)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rsconnect</em> version 0.8.26 <a href="00Index.html">Index</a>]</div>
+</body></html>

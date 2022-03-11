@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Get/set packrat project options</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for packrat-options {packrat}"><tr><td>packrat-options {packrat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Get/set packrat project options</h2>
+
+<h3>Description</h3>
+
+<p>Get and set options for the current packrat-managed project.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+get_opts(options = NULL, simplify = TRUE, project = NULL)
+
+set_opts(..., project = NULL, persist = TRUE)
+
+opts
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>options</code></td>
+<td>
+<p>A character vector of valid option names.</p>
+</td></tr>
+<tr valign="top"><td><code>simplify</code></td>
+<td>
+<p>Boolean; <code>unlist</code> the returned options? Useful for when retrieving
+a single option.</p>
+</td></tr>
+<tr valign="top"><td><code>project</code></td>
+<td>
+<p>The project directory. When in packrat mode, defaults to the current project;
+otherwise, defaults to the current working directory.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Entries of the form <code>key = value</code>, used for setting packrat project options.</p>
+</td></tr>
+<tr valign="top"><td><code>persist</code></td>
+<td>
+<p>Boolean; persist these options for future sessions?</p>
+</td></tr>
+</table>
+
+
+<h3>Valid Options</h3>
+
+
+<ul>
+<li> <p><code>auto.snapshot</code>: Perform automatic, asynchronous snapshots when running interactively?
+(logical; defaults to <code>FALSE</code>)
+</p>
+</li>
+<li> <p><code>use.cache</code>:
+Install packages into a global cache, which is then shared across projects? The
+directory to use is read through <code>Sys.getenv("R_PACKRAT_CACHE_DIR")</code>.
+Windows support is currently experimental.
+(logical; defaults to <code>FALSE</code>)
+</p>
+</li>
+<li> <p><code>print.banner.on.startup</code>:
+Print the banner on startup? Can be one of <code>TRUE</code> (always print),
+<code>FALSE</code> (never print), and <code>'auto'</code> (do the right thing)
+(defaults to <code>"auto"</code>)
+</p>
+</li>
+<li> <p><code>vcs.ignore.lib</code>:
+If TRUE, version control configuration is modified to ignore packrat private libraries.
+(logical; defaults to <code>TRUE</code>)
+</p>
+</li>
+<li> <p><code>vcs.ignore.src</code>:
+If TRUE, version control configuration is modified to ignore packrat private sources.
+(logical; defaults to <code>FALSE</code>)
+</p>
+</li>
+<li> <p><code>external.packages</code>:
+Packages which should be loaded from the user library. This can be useful for
+very large packages which you don't want duplicated across multiple projects,
+e.g. BioConductor annotation packages, or for package development scenarios
+wherein you want to use e.g. <code>devtools</code> and <code>roxygen2</code> for package
+development, but do not want your package to depend on these packages.
+(character; defaults to <code>Sys.getenv("R_PACKRAT_EXTERNAL_PACKAGES")</code>)
+</p>
+</li>
+<li> <p><code>local.repos</code>:
+Ad-hoc local 'repositories'; i.e., directories containing package sources within
+sub-directories.
+(character; empty by default)
+</p>
+</li>
+<li> <p><code>load.external.packages.on.startup</code>:
+Load any packages specified within <code>external.packages</code> on startup?
+(logical; defaults to <code>TRUE</code>)
+</p>
+</li>
+<li> <p><code>ignored.packages</code>:
+Prevent packrat from tracking certain packages. Dependencies of these packages
+will also not be tracked (unless these packages are encountered as dependencies
+in a separate context from the ignored package).
+(character; empty by default)
+</p>
+</li>
+<li> <p><code>ignored.directories</code>:
+Prevent packrat from looking for dependencies inside certain directories of your
+workspace. For example, if you have set your &quot;local.repos&quot; to be inside your local
+workspace so that you can track custom packages as git submodules.
+Each item should be the relative path to a directory in the workspace, e.g. &quot;data&quot;,
+&quot;lib/gitsubmodule&quot;. Note that packrat already ignores any &quot;invisible&quot; files and
+directories, such as those whose names start with a &quot;.&quot; character.
+(character; empty by default)
+</p>
+</li>
+<li> <p><code>quiet.package.installation</code>:
+Emit output during package installation?
+(logical; defaults to <code>TRUE</code>)
+</p>
+</li>
+<li> <p><code>snapshot.recommended.packages</code>:
+Should 'recommended' packages discovered in the system library be
+snapshotted? See the <code>Priority</code> field of <code>available.packages()</code>
+for more information &ndash; 'recommended' packages are those normally bundled
+with CRAN releases of R on OS X and Windows, but new releases are also
+available on the CRAN server.
+(logical; defaults to <code>FALSE</code>)
+</p>
+</li>
+<li> <p><code>snapshot.fields</code>:
+What fields of a package's DESCRIPTION file should be used when discovering
+dependencies?
+(character, defaults to <code>c("Imports", "Depends", "LinkingTo")</code>)
+</p>
+</li>
+<li> <p><code>symlink.system.packages</code>:
+Symlink base <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> packages into a private <code>packrat/lib-R</code> directory?
+This is done to further encapsulate the project from user packages that
+have been installed into the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> system library.
+(boolean, defaults to <code>TRUE</code>)
+</p>
+</li></ul>
+
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+## use 'devtools' and 'knitr' from the user library
+packrat::set_opts(external.packages = c("devtools", "knitr"))
+
+## set local repository
+packrat::set_opts(local.repos = c("~/projects/R"))
+
+## get the set of 'external packages'
+packrat::opts$external.packages()
+
+## set the external packages
+packrat::opts$external.packages(c("devtools", "knitr"))
+
+## End(Not run)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>packrat</em> version 0.5.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

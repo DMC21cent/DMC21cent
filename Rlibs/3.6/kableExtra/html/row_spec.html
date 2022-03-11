@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Specify the look of the selected row</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for row_spec {kableExtra}"><tr><td>row_spec {kableExtra}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Specify the look of the selected row</h2>
+
+<h3>Description</h3>
+
+<p>This function allows users to select a row and then specify
+its look. It can also specify the format of the header row when <code>row</code> = 0.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+row_spec(kable_input, row, bold = FALSE, italic = FALSE,
+  monospace = FALSE, underline = FALSE, strikeout = FALSE,
+  color = NULL, background = NULL, align = NULL, font_size = NULL,
+  angle = NULL, extra_css = NULL, hline_after = FALSE,
+  extra_latex_after = NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>kable_input</code></td>
+<td>
+<p>Output of <code>knitr::kable()</code> with <code>format</code> specified</p>
+</td></tr>
+<tr valign="top"><td><code>row</code></td>
+<td>
+<p>A numeric value or vector indicating which row(s) to be selected. You don't
+need to count in header rows or group labeling rows.</p>
+</td></tr>
+<tr valign="top"><td><code>bold</code></td>
+<td>
+<p>A T/F value to control whether the text of the selected row
+need to be bolded.</p>
+</td></tr>
+<tr valign="top"><td><code>italic</code></td>
+<td>
+<p>A T/F value to control whether the text of the selected row
+need to be emphasized.</p>
+</td></tr>
+<tr valign="top"><td><code>monospace</code></td>
+<td>
+<p>A T/F value to control whether the text of the selected row
+need to be monospaced (verbatim)</p>
+</td></tr>
+<tr valign="top"><td><code>underline</code></td>
+<td>
+<p>A T/F value to control whether the text of the selected row
+need to be underlined</p>
+</td></tr>
+<tr valign="top"><td><code>strikeout</code></td>
+<td>
+<p>A T/F value to control whether the text of the selected row
+need to be stricked out.</p>
+</td></tr>
+<tr valign="top"><td><code>color</code></td>
+<td>
+<p>A character string for row text color. For example, &quot;red&quot; or
+&quot;#BBBBBB&quot;.</p>
+</td></tr>
+<tr valign="top"><td><code>background</code></td>
+<td>
+<p>A character string for row background color. Here please
+pay attention to the differences in color codes between HTML and LaTeX.</p>
+</td></tr>
+<tr valign="top"><td><code>align</code></td>
+<td>
+<p>A character string for cell alignment. For HTML, possible values could
+be <code>l</code>, <code>c</code>, <code>r</code> plus <code>left</code>, <code>center</code>, <code>right</code>, <code>justify</code>, <code>initial</code> and <code>inherit</code>
+while for LaTeX, you can only choose from <code>l</code>, <code>c</code> &amp; <code>r</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>font_size</code></td>
+<td>
+<p>A numeric input for font size. For HTML, you can also use
+options including <code>xx-small</code>, <code>x-small</code>, <code>small</code>, <code>medium</code>, <code>large</code>,
+<code>x-large</code>, <code>xx-large</code>, <code>smaller</code>, <code>larger</code>, <code>initial</code> and <code>inherit</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>angle</code></td>
+<td>
+<p>0-360, degree that the text will rotate.</p>
+</td></tr>
+<tr valign="top"><td><code>extra_css</code></td>
+<td>
+<p>Extra css text to be passed into the cells of the row. Note
+that it's not for the whole row.</p>
+</td></tr>
+<tr valign="top"><td><code>hline_after</code></td>
+<td>
+<p>T/F. A replicate of <code>hline.after</code> in xtable. It
+addes a hline after ther row</p>
+</td></tr>
+<tr valign="top"><td><code>extra_latex_after</code></td>
+<td>
+<p>Extra LaTeX text to be added after the row. Similar
+with <code>add.to.row</code> in xtable</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+x &lt;- knitr::kable(head(mtcars), "html")
+row_spec(x, 1:2, bold = TRUE, italic = TRUE)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>kableExtra</em> version 1.1.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

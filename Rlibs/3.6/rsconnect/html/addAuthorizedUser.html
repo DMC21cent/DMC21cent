@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Add authorized user to application</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for addAuthorizedUser {rsconnect}"><tr><td>addAuthorizedUser {rsconnect}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Add authorized user to application</h2>
+
+<h3>Description</h3>
+
+<p>Add authorized user to application
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+addAuthorizedUser(
+  email,
+  appDir = getwd(),
+  appName = NULL,
+  account = NULL,
+  server = NULL,
+  sendEmail = NULL,
+  emailMessage = NULL
+)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>email</code></td>
+<td>
+<p>Email address of user to add.</p>
+</td></tr>
+<tr valign="top"><td><code>appDir</code></td>
+<td>
+<p>Directory containing application. Defaults to
+current working directory.</p>
+</td></tr>
+<tr valign="top"><td><code>appName</code></td>
+<td>
+<p>Name of application.</p>
+</td></tr>
+<tr valign="top"><td><code>account</code></td>
+<td>
+<p>Account name. If a single account is registered on the
+system then this parameter can be omitted.</p>
+</td></tr>
+<tr valign="top"><td><code>server</code></td>
+<td>
+<p>Server name. Required only if you use the same account name on
+multiple servers.</p>
+</td></tr>
+<tr valign="top"><td><code>sendEmail</code></td>
+<td>
+<p>Send an email letting the user know the application
+has been shared with them.</p>
+</td></tr>
+<tr valign="top"><td><code>emailMessage</code></td>
+<td>
+<p>Optional character vector of length 1 containing a
+custom message to send in email invitation. Defaults to NULL, which
+will use default invitation message.</p>
+</td></tr>
+</table>
+
+
+<h3>Note</h3>
+
+<p>This function works only for ShinyApps servers.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="removeAuthorizedUser.html">removeAuthorizedUser()</a></code> and <code><a href="showUsers.html">showUsers()</a></code>
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>rsconnect</em> version 0.8.26 <a href="00Index.html">Index</a>]</div>
+</body></html>

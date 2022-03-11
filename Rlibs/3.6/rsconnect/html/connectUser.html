@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Connect User Account</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for connectUser {rsconnect}"><tr><td>connectUser {rsconnect}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Connect User Account</h2>
+
+<h3>Description</h3>
+
+<p>Connect a user account to the package so that it can be used to deploy and
+manage applications on behalf of the account.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+connectUser(account = NULL, server = NULL, quiet = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>account</code></td>
+<td>
+<p>A name for the account to connect. Optional.</p>
+</td></tr>
+<tr valign="top"><td><code>server</code></td>
+<td>
+<p>The server to connect to. Optional if there is only one server
+registered.</p>
+</td></tr>
+<tr valign="top"><td><code>quiet</code></td>
+<td>
+<p>Whether or not to show messages and prompts while connecting the
+account.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>When this function is invoked, a web browser will be opened to a
+page on the target server where you will be prompted to enter your
+credentials. Upon successful authentication, your local installation of
+<span class="pkg">rsconnect</span> and your server account will be paired, and you'll
+be able to deploy and manage applications using the package without further
+prompts for credentials.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>Other Account functions: 
+<code><a href="accounts.html">accounts</a>()</code>,
+<code><a href="connectApiUser.html">connectApiUser</a>()</code>,
+<code><a href="setAccountInfo.html">setAccountInfo</a>()</code>
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>rsconnect</em> version 0.8.26 <a href="00Index.html">Index</a>]</div>
+</body></html>

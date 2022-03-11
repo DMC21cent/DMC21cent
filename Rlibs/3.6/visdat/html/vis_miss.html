@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Visualise a data.frame to display missingness.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for vis_miss {visdat}"><tr><td>vis_miss {visdat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Visualise a data.frame to display missingness.</h2>
+
+<h3>Description</h3>
+
+<p><code>vis_miss</code> provides an at-a-glance ggplot of the missingness inside a
+dataframe, colouring cells according to missingness, where black indicates
+a missing cell and grey indicates a present cell. As it returns a ggplot
+object, it is very easy to customize and change labels.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+vis_miss(x, cluster = FALSE, sort_miss = FALSE, show_perc = TRUE,
+  show_perc_col = TRUE, large_data_size = 9e+05,
+  warn_large_data = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>a data.frame</p>
+</td></tr>
+<tr valign="top"><td><code>cluster</code></td>
+<td>
+<p>logical. TRUE specifies that you want to use hierarchical
+clustering (mcquitty method) to arrange rows according to missingness.
+FALSE specifies that you want to leave it as is. Default value is FALSE.</p>
+</td></tr>
+<tr valign="top"><td><code>sort_miss</code></td>
+<td>
+<p>logical. TRUE arranges the columns in order of missingness.
+Default value is FALSE.</p>
+</td></tr>
+<tr valign="top"><td><code>show_perc</code></td>
+<td>
+<p>logical. TRUE now adds in the % of missing/complete data
+in the whole dataset into the legend. Default value is TRUE.</p>
+</td></tr>
+<tr valign="top"><td><code>show_perc_col</code></td>
+<td>
+<p>logical. TRUE adds in the % missing data in a given
+column into the x axis. Can be disabled with FALSE. Default value is TRUE.</p>
+</td></tr>
+<tr valign="top"><td><code>large_data_size</code></td>
+<td>
+<p>integer default is 900000, this can be changed. See
+note for more details</p>
+</td></tr>
+<tr valign="top"><td><code>warn_large_data</code></td>
+<td>
+<p>logical - warn if there is large data? Default is TRUE
+see note for more details</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p><code>ggplot2</code> object displaying the position of missing values in the
+dataframe, and the percentage of values missing and present.
+</p>
+
+
+<h3>Note</h3>
+
+<p>Some datasets might be too large to plot, sometimes creating a blank
+plot - if this happens, I would recommend downsampling the data, either
+looking at the first 1,000 rows or by taking a random sample. This means
+that you won't get the same &quot;look&quot; at the data, but it is better than
+a blank plot! See example code for suggestions on doing this.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="vis_dat.html">vis_dat()</a></code> <code><a href="vis_guess.html">vis_guess()</a></code> <code><a href="vis_expect.html">vis_expect()</a></code> <code><a href="vis_cor.html">vis_cor()</a></code> <code><a href="vis_compare.html">vis_compare()</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+vis_miss(airquality)
+
+## Not run: 
+vis_miss(airquality, cluster = TRUE)
+
+vis_miss(airquality, sort_miss = TRUE)
+
+# if you have a large dataset, you might want to try downsampling:
+library(nycflight13)
+library(dplyr)
+flights %&gt;%
+  sample_n(1000) %&gt;%
+  vis_miss()
+
+flights %&gt;%
+  slice(1:1000) %&gt;%
+  vis_miss()
+
+
+## End(Not run)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>visdat</em> version 0.5.3 <a href="00Index.html">Index</a>]</div>
+</body></html>

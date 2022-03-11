@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Visualise whether a value is in a data frame</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for vis_expect {visdat}"><tr><td>vis_expect {visdat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Visualise whether a value is in a data frame</h2>
+
+<h3>Description</h3>
+
+<p><code>vis_expect</code> visualises certain conditions or values in your data. For
+example, If you are not sure whether to expect -1 in your data, you could
+write: <code>vis_expect(data, ~.x == -1)</code>, and you can see if there are times
+where the values in your data are equal to -1. You could also, for example,
+explore a set of bad strings, or possible NA values and visualise where
+they are using <code>vis_expect(data, ~.x %in% bad_strings)</code> where
+<code>bad_strings</code> is a character vector containing bad strings  like <code>N A</code>
+<code>N/A</code> etc.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+vis_expect(data, expectation, show_perc = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>a data.frame</p>
+</td></tr>
+<tr valign="top"><td><code>expectation</code></td>
+<td>
+<p>a formula following the syntax: <code>~.x {condition}</code>.
+For example, writing <code>~.x &lt; 20</code> would mean &quot;where a variable value is less
+than 20, replace with NA&quot;, and <code>~.x %in% {vector}</code> would mean &quot;where a
+variable has values that are in that vector&quot;.</p>
+</td></tr>
+<tr valign="top"><td><code>show_perc</code></td>
+<td>
+<p>logical. TRUE now adds in the % of expectations are
+TRUE or FALSE in the whole dataset into the legend. Default value is TRUE.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a ggplot2 object
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="vis_miss.html">vis_miss()</a></code> <code><a href="vis_dat.html">vis_dat()</a></code> <code><a href="vis_guess.html">vis_guess()</a></code> <code><a href="vis_cor.html">vis_cor()</a></code> <code><a href="vis_compare.html">vis_compare()</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+dat_test &lt;- tibble::tribble(
+            ~x, ~y,
+            -1,  "A",
+            0,  "B",
+            1,  "C",
+            NA, NA
+            )
+
+vis_expect(dat_test, ~.x == -1)
+
+## Not run: 
+vis_expect(airquality, ~.x == 5.1)
+
+# explore some common NA strings
+
+common_nas &lt;- c(
+"NA",
+"N A",
+"N/A",
+"na",
+"n a",
+"n/a"
+)
+
+dat_ms &lt;- tibble::tribble(~x,  ~y,    ~z,
+                         1,   "A",   -100,
+                         3,   "N/A", -99,
+                         NA,  NA,    -98,
+                         "N A", "E",   -101,
+                         "na", "F",   -1)
+
+vis_expect(dat_ms, ~.x %in% common_nas)
+
+
+## End(Not run)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>visdat</em> version 0.5.3 <a href="00Index.html">Index</a>]</div>
+</body></html>

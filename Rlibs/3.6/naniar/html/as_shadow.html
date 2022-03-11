@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create shadows</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for as_shadow {naniar}"><tr><td>as_shadow {naniar}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Create shadows</h2>
+
+<h3>Description</h3>
+
+<p>Representing missing data structure is achieved using the shadow matrix,
+introduced in <a href="https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization">Swayne and Buja</a>. The shadow
+matrix is the same dimension as the data, and consists of binary indicators
+of missingness of data values, where missing is represented as &quot;NA&quot;, and not
+missing is represented as &quot;!NA&quot;. Although these may be represented as 1 and
+0, respectively.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+as_shadow(data, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>dataframe</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>selected variables to use</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>appended shadow with column names
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>naniar</em> version 0.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

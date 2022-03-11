@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Render the table as an format-independent image and use it in...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for as_image {kableExtra}"><tr><td>as_image {kableExtra}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Render the table as an format-independent image and use it in rmarkdown</h2>
+
+<h3>Description</h3>
+
+<p>This function generates a temporary png file using <code>save_kable</code>
+and then try to put it in an rmarkdown document using
+<code>knitr::include_graphics</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+as_image(x, width = NULL, height = NULL, file = NULL, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>kable input. Either HTML or LaTeX</p>
+</td></tr>
+<tr valign="top"><td><code>width</code></td>
+<td>
+<p>Image width in inches. (1 inch = 2.54 cm)</p>
+</td></tr>
+<tr valign="top"><td><code>height</code></td>
+<td>
+<p>Image height in inches. (1 inch = 2.54 cm)</p>
+</td></tr>
+<tr valign="top"><td><code>file</code></td>
+<td>
+<p>By default, as_image saves to an temp file, which works for
+normal rmarkdown. However if you are using things like xaringan, which can't
+be a standalone html, you can specify this file be the path you need, eg.
+&quot;img/something.png&quot;</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Additional arguments passed to save_kable.</p>
+</td></tr>
+</table>
+
+<hr /><div style="text-align: center;">[Package <em>kableExtra</em> version 1.1.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

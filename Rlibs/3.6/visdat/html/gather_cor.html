@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: (Internal) create a tidy dataframe of correlations suitable...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for gather_cor {visdat}"><tr><td>gather_cor {visdat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>(Internal) create a tidy dataframe of correlations suitable for plotting</h2>
+
+<h3>Description</h3>
+
+<p>(Internal) create a tidy dataframe of correlations suitable for plotting
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+gather_cor(data, cor_method = "pearson",
+  na_action = "pairwise.complete.obs")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>data.frame</p>
+</td></tr>
+<tr valign="top"><td><code>cor_method</code></td>
+<td>
+<p>correlation method to use, from <code>cor</code>: &quot;a character
+string indicating which correlation coefficient (or covariance) is to be
+computed. One of &quot;pearson&quot; (default), &quot;kendall&quot;, or &quot;spearman&quot;: can be
+abbreviated.&quot;</p>
+</td></tr>
+<tr valign="top"><td><code>na_action</code></td>
+<td>
+<p>The method for computing covariances when there are missing
+values present. This can be &quot;everything&quot;, &quot;all.obs&quot;, &quot;complete.obs&quot;,
+&quot;na.or.complete&quot;, or &quot;pairwise.complete.obs&quot; (default). This option is
+taken from the <code>cor</code> function argument <code>use</code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>tidy dataframe of correlations
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+gather_cor(airquality)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>visdat</em> version 0.5.3 <a href="00Index.html">Index</a>]</div>
+</body></html>

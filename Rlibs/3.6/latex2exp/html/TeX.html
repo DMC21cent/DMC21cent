@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Converts a LaTeX string to a 'plotmath' expression.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for TeX {latex2exp}"><tr><td>TeX {latex2exp}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Converts a LaTeX string to a <code><a href="../../grDevices/html/plotmath.html">plotmath</a></code> expression.</h2>
+
+<h3>Description</h3>
+
+<p>Converts a LaTeX string to a <code><a href="../../grDevices/html/plotmath.html">plotmath</a></code> expression.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+TeX(string, output = c("expression", "text", "ast"))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>string</code></td>
+<td>
+<p>A character vector containing LaTeX expressions. Note that any backslashes must be escaped (e.g. &quot;$\alpha&quot;).</p>
+</td></tr>
+<tr valign="top"><td><code>output</code></td>
+<td>
+<p>The returned object, one of &quot;expression&quot; (default, returns a plotmath expression ready for plotting), &quot;text&quot; (returns the expression as a string), and &quot;ast&quot; (returns the tree used to generate the expression).</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>Returns an expression (see the <code>output</code> parameter).
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+TeX("$\\alpha$")
+TeX("The ratio of 1 and 2 is $\\frac{1}{2}$")
+
+a &lt;- 1:100
+plot(a, a^2, xlab=TeX("$\\alpha$"), ylab=TeX("$\\alpha^2$"))
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>latex2exp</em> version 0.4.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

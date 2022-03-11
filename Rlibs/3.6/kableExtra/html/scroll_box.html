@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Put a HTML table into a scrollable box</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for scroll_box {kableExtra}"><tr><td>scroll_box {kableExtra}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Put a HTML table into a scrollable box</h2>
+
+<h3>Description</h3>
+
+<p>This function will put a HTML kable object in a fixed-height,
+fixed-width or both box and make it scrollable.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+scroll_box(kable_input, height = NULL, width = NULL,
+  box_css = "border: 1px solid #ddd; padding: 5px; ", extra_css = NULL,
+  fixed_thead = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>kable_input</code></td>
+<td>
+<p>A HTML kable object</p>
+</td></tr>
+<tr valign="top"><td><code>height</code></td>
+<td>
+<p>A character string indicating the height of the box, e.g. &quot;50px&quot;</p>
+</td></tr>
+<tr valign="top"><td><code>width</code></td>
+<td>
+<p>A character string indicating the width of the box, e.g. &quot;100px&quot;</p>
+</td></tr>
+<tr valign="top"><td><code>box_css</code></td>
+<td>
+<p>CSS text for the box</p>
+</td></tr>
+<tr valign="top"><td><code>extra_css</code></td>
+<td>
+<p>Extra CSS styles</p>
+</td></tr>
+<tr valign="top"><td><code>fixed_thead</code></td>
+<td>
+<p>HTML table option so table header row is fixed at top.
+Values can be either T/F or <code>list(enabled = T/F, background = "anycolor")</code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+# Specify table size by pixels
+kable(cbind(mtcars, mtcars), "html") %&gt;%
+    kable_styling() %&gt;%
+    scroll_box(width = "500px", height = "200px")
+
+# Specify by percent
+kable(cbind(mtcars, mtcars), "html") %&gt;%
+    kable_styling() %&gt;%
+    scroll_box(width = "100%", height = "200px")
+
+## End(Not run)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>kableExtra</em> version 1.1.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,10 @@
+"0","lab_summary(adlb = adlbc,"
+"0","           kind = ""abnormal"","
+"0","           param_filter = ""Cholesterol (mmol/L)"","
+"0","           selected_visit = c(""Baseline"", ""Week 2"", ""Week 4"", ""Week 6"", ""Week 8"", ""End of Treatment""),"
+"0","           title = NULL  # an auto generated title"
+"0","          )"
+"2","Joining, by = c(""PARAM"", ""TRTA"", ""AVISIT"")
+"
+"2","Joining, by = ""AVISIT""
+"

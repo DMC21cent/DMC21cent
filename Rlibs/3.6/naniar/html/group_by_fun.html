@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Group By Helper</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for group_by_fun {naniar}"><tr><td>group_by_fun {naniar}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Group By Helper</h2>
+
+<h3>Description</h3>
+
+<p>This is a wrapper to facilitate the <code>grouped_df</code> S3 method.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+group_by_fun(data, .fun, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>data.frame, which will be grouped</p>
+</td></tr>
+<tr valign="top"><td><code>.fun</code></td>
+<td>
+<p>a function to apply</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>additional arguments to be passed to map</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a dataframe with the function applied to each group
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+## Not run: 
+miss_case_table.grouped_df &lt;- function(data){
+group_by_fun(data,.fun = miss_case_table)
+}
+airquality %&gt;%
+group_by(Month) %&gt;%
+miss_case_table()
+
+## End(Not run)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>naniar</em> version 0.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

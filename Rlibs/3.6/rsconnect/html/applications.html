@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: List Deployed Applications</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for applications {rsconnect}"><tr><td>applications {rsconnect}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>List Deployed Applications</h2>
+
+<h3>Description</h3>
+
+<p>List all applications currently deployed for a given account.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+applications(account = NULL, server = NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>account</code></td>
+<td>
+<p>Account name. If a single account is registered on the system
+then this parameter can be omitted.</p>
+</td></tr>
+<tr valign="top"><td><code>server</code></td>
+<td>
+<p>Server name. Required only if you use the same account name on
+multiple servers.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>Returns a data frame with the following columns:
+</p>
+
+<table summary="Rd table">
+<tr>
+ <td style="text-align: left;">
+<code>id</code>         </td><td style="text-align: left;"> Application unique id </td>
+</tr>
+<tr>
+ <td style="text-align: left;">
+<code>name</code>       </td><td style="text-align: left;"> Name of application </td>
+</tr>
+<tr>
+ <td style="text-align: left;">
+<code>url</code>        </td><td style="text-align: left;"> URL where application can be accessed </td>
+</tr>
+<tr>
+ <td style="text-align: left;">
+
+<code>status</code>     </td><td style="text-align: left;"> Current status of application. Valid values are <code>pending</code>,
+<code>deploying</code>, <code>running</code>, <code>terminating</code>, and <code>terminated</code> </td>
+</tr>
+<tr>
+ <td style="text-align: left;">
+<code>size</code>       </td><td style="text-align: left;"> Instance size (small, medium, large, etc.) (on
+ShinyApps.io) </td>
+</tr>
+<tr>
+ <td style="text-align: left;">
+<code>instances</code>  </td><td style="text-align: left;"> Number of instances (on ShinyApps.io) </td>
+</tr>
+<tr>
+ <td style="text-align: left;">
+<code>config_url</code> </td><td style="text-align: left;"> URL where application can be configured </td>
+</tr>
+<tr>
+ <td style="text-align: left;">
+</td>
+</tr>
+
+</table>
+
+
+
+<h3>Note</h3>
+
+<p>To register an account you call the <code><a href="setAccountInfo.html">setAccountInfo()</a></code> function.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="deployApp.html">deployApp()</a></code>, <code><a href="terminateApp.html">terminateApp()</a></code>
+</p>
+<p>Other Deployment functions: 
+<code><a href="deployAPI.html">deployAPI</a>()</code>,
+<code><a href="deployApp.html">deployApp</a>()</code>,
+<code><a href="deployDoc.html">deployDoc</a>()</code>,
+<code><a href="deploySite.html">deploySite</a>()</code>,
+<code><a href="deployTFModel.html">deployTFModel</a>()</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+
+# list all applications for the default account
+applications()
+
+# list all applications for a specific account
+applications("myaccount")
+
+# view the list of applications in the data viewer
+View(applications())
+
+## End(Not run)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>rsconnect</em> version 0.8.26 <a href="00Index.html">Index</a>]</div>
+</body></html>

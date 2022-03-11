@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: (Internal) Add a specific palette to a visdat plot</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for add_vis_dat_pal {visdat}"><tr><td>add_vis_dat_pal {visdat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>(Internal) Add a specific palette to a visdat plot</h2>
+
+<h3>Description</h3>
+
+<p>(Internal) Add a specific palette to a visdat plot
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+add_vis_dat_pal(vis_plot, palette)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>vis_plot</code></td>
+<td>
+<p>visdat plot created using <code>vis_gather_</code>, <code>vis_extract_value</code>
+and <code>vis_create_</code></p>
+</td></tr>
+<tr valign="top"><td><code>palette</code></td>
+<td>
+<p>character &quot;default&quot;, &quot;qual&quot; or &quot;cb_safe&quot;. &quot;default&quot; (the
+default) provides the stock ggplot scale for separating the colours. &quot;qual&quot;
+uses an experimental qualitative colour scheme for providing distinct
+colours for each Type. &quot;cb_safe&quot; is a set of colours that are appropriate
+for those with colourblindness. &quot;qual&quot; and &quot;cb_safe&quot; are drawn from
+http://colorbrewer2.org/.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a visdat plot with a particular palette
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+## Not run: 
+# see internal use inside vis_guess and vis_dat
+
+## End(Not run)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>visdat</em> version 0.5.3 <a href="00Index.html">Index</a>]</div>
+</body></html>

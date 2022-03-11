@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Plot of cumulative sum of missing value for each variable</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for gg_miss_var_cumsum {naniar}"><tr><td>gg_miss_var_cumsum {naniar}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Plot of cumulative sum of missing value for each variable</h2>
+
+<h3>Description</h3>
+
+<p>A plot showing the cumulative sum of missing values for each variable,
+reading columns from the left to the right of the initial dataframe. A
+default minimal theme is used, which can be customised as normal for ggplot.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+gg_miss_var_cumsum(x)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>a data.frame</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a ggplot object showing the cumulative sum of missings over the variables
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="geom_miss_point.html">geom_miss_point()</a></code> <code><a href="gg_miss_case.html">gg_miss_case()</a></code> <a href="gg_miss_case_cumsum.html">gg_miss_case_cumsum</a> <code><a href="gg_miss_fct.html">gg_miss_fct()</a></code> <code><a href="gg_miss_span.html">gg_miss_span()</a></code> <code><a href="gg_miss_var.html">gg_miss_var()</a></code> <code><a href="gg_miss_which.html">gg_miss_which()</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+gg_miss_var_cumsum(airquality)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>naniar</em> version 0.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>
