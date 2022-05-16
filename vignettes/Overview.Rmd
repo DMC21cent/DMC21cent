@@ -45,17 +45,18 @@ library(DMC21cent)
 
 ## Exploring `SEX`
 
-```{r, fig.height=3}
+```{r, fig.height=3, fig.width=6}
 sl_summary(adsl,
            vars = "SEX",
            kinds = "bar_binom",
            titles = "Female Subjects (%)",
-           trt = "TRT01P")
+           trt = "TRT01P", 
+           base_size = 18)
 
 ```
 
 
-```{r, fig.height=3}
+```{r, fig.height=3, fig.width=6}
 sl_summary(adsl,
           vars = list("SEX" = "M"),  # `list()` only works for `bar_binom` kind
           kinds = "bar_binom",
@@ -67,14 +68,15 @@ sl_summary(adsl,
 
 
 
-```{r, fig.height=3}
+```{r, fig.height=4, fig.width=6}
 sl_summary(adsl, 
            vars = c(list("SEX" = "M"), "SEX"),
            kinds = c("bar_binom"),
            trt = "TRT01P",
            show_plots = TRUE,
            titles = c("Male Subjects (%)", "Female Subjects (%)"),
-           ncol = 1)
+           ncol = 1, 
+           base_size = 14)
 
 # or you can save the output of sl_summary() in an object.
 ```
@@ -103,7 +105,7 @@ sl_summary(adsl,
 ## Exploring `AGE`
 
 
-```{r, fig.height=3}
+```{r, fig.height=3, fig.width=6}
 sl_summary(adsl,
            vars = "AGEGR1",
            relevel_vec = list(adsl %>% pull(AGEGR1) %>% levels() %>% rev()),
@@ -113,16 +115,32 @@ sl_summary(adsl,
 ```
 
 
-```{r, fig.height=3}
-sl_summary(adsl,
-           vars = "AGE",
-           kinds = "box",
-           titles = "AGE (years)",
-           trt = "TRT01A",
-           breaks_vec = list(c(60, 70, 80, 90)),
-           show_plots = TRUE)
+```{r, fig.height=3, fig.width=6}
+sl_summary(
+  adsl,
+  vars = "AGE",
+  kinds = "box",
+  titles = "Age [years]",
+  trt = "TRT01A",
+  breaks_vec = list(c(60, 70, 80, 90)),
+  show_plots = TRUE,
+  base_size = 18
+)
 ```
 
+Show same plot but with th gridlines set to the overall 5-number summary. These are informative gridlines. 
+
+```{r, fig.height=3, fig.width=6}
+sl_summary(
+  adsl,
+  vars = "AGE",
+  kinds = "box",
+  titles = "Age [years]",
+  trt = "TRT01A",
+  show_plots = TRUE,
+  base_size = 18
+)
+```
 
 
 ```{r}
