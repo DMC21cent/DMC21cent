@@ -87,7 +87,7 @@
 #'      )
 #'
 #' }
-sl_summary <- function(data, vars, kinds, trt = "TRT01P", titles = NULL, show_plots = TRUE, ncol = 1, relevel_vec = list(NULL), breaks_vec = list(NULL)){
+sl_summary <- function(data, vars, kinds, trt = "TRT01P", titles = NULL, show_plots = TRUE, ncol = 1, relevel_vec = list(NULL), breaks_vec = list(NULL), base_size = 18, ...){
 
 
   check_length(vars, kinds)
@@ -119,11 +119,11 @@ sl_summary <- function(data, vars, kinds, trt = "TRT01P", titles = NULL, show_pl
   for(i in 1:length(vars)){
 
     if(kinds[i] == 'box'){
-      output_objects[[i]] <- get_box(data, var = vars[i], trt = trt[i], title = titles[i], breaks_vec = breaks_vec[[i]])
+      output_objects[[i]] <- get_box(data, var = vars[i], trt = trt[i], title = titles[i], breaks_vec = breaks_vec[[i]], base_size)
     } else if(kinds[i] == 'bar_binom'){
-      output_objects[[i]] <- get_bar_binom(data, var = vars[i], trt = trt[i], title = titles[i], base_size = 11)
+      output_objects[[i]] <- get_bar_binom(data, var = vars[i], trt = trt[i], title = titles[i], base_size)
     } else if(kinds[i] == 'bar_stack'){
-      output_objects[[i]] <- get_bar_stack(data, var = vars[i], trt = trt[i], title = titles[i], base_size = 11, relevel_vec = relevel_vec[[i]])
+      output_objects[[i]] <- get_bar_stack(data, var = vars[i], trt = trt[i], title = titles[i], base_size, relevel_vec = relevel_vec[[i]])
     }
 
   }
@@ -171,7 +171,7 @@ check_length <- function(vars, alts){
 #' @return ggplot object
 #' @keywords internal
 #' @noRd
-get_box <- function(data, var, trt, title, breaks_vec) {
+get_box <- function(data, var, trt, title, breaks_vec, base_size = 18) {
 
   ## Get the variable label for plot axis
   #------------------------------------------------
@@ -220,7 +220,8 @@ get_box <- function(data, var, trt, title, breaks_vec) {
       alpha = 0.5
     ) +
     #geom_rug(sides = "b") +
-    theme_light(base_size = 10) +
+    #theme_light(base_size = 10) +
+    theme_minimal(base_size = base_size) +
     # scale_x_continuous(limit = c(min(data[[selection]]), max(data[[selection]])),
     #                    breaks = round(fivenum(data[[selection]]), 0)) +
     xlab(xlab) +
@@ -228,7 +229,7 @@ get_box <- function(data, var, trt, title, breaks_vec) {
       panel.grid.major.y = element_blank(),
       panel.grid.minor = element_blank(),
       axis.title = element_blank(),
-      plot.title = element_text(hjust = 0.5)
+      plot.title = element_text(hjust = 0.1)
     )
 
   if(is.null(title)){
@@ -277,7 +278,7 @@ get_box <- function(data, var, trt, title, breaks_vec) {
 #' @return ggplot object
 #' @keywords internal
 #' @noRd
-get_bar_binom <- function(data, var, trt, title = NA, base_size = 11){
+get_bar_binom <- function(data, var, trt, title = NA, base_size = 18){
 
   if(class(var) == 'list' && names(var) != ""){
     var_filter = var[[1]]
@@ -320,8 +321,9 @@ get_bar_binom <- function(data, var, trt, title = NA, base_size = 11){
     dplyr::ungroup() %>%
     dplyr::filter(!!sym(var) == var_filter) %>%
     ggplot(aes(x = trt_with_label, y = pct, fill = !!sym(var), label = axis_lab)) +
-    geom_bar(stat = "identity", size = 0.8, position = position_dodge(width = 1), alpha = 0.6) +
-    geom_text(aes(y = pct + 9.5), position = position_dodge(width = 1), size = 3, vjust = 0) +
+    geom_hline(yintercept = 0, colour = "wheat4", linetype=1, size=0.6)+
+    geom_bar(stat = "identity", size = 0.5, position = position_dodge(width = 1), alpha = 0.8) +
+    geom_text(aes(y = pct), position = position_dodge(width = 1), size = 5, vjust = 0, hjust=1.6, color = "white") +
     scale_y_continuous(limit = c(0, 100))+
     theme_minimal(base_size = base_size) +
     coord_flip() +
@@ -334,7 +336,7 @@ get_bar_binom <- function(data, var, trt, title = NA, base_size = 11){
           panel.grid.minor.y = element_blank(),
           panel.grid.minor.x = element_blank(),
           axis.title = element_blank(),
-          plot.title = element_text(hjust = 0.5))
+          plot.title = element_text(hjust = 0.1))
 
 }
 
