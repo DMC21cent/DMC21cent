@@ -171,7 +171,7 @@ patchwork::wrap_plots(plots, ncol = 1)
 
 ## Forest Plot
 
-```{r}
+```{r, fig.height=6, fig.width=6}
 ae_summary(adae = adae,
             adsl = adsl,
             kind = "forest",
@@ -185,7 +185,7 @@ ae_summary(adae = adae,
 
 ## Rate Plot
 
-```{r}
+```{r, fig.height=8, fig.width=12}
 ae_summary(adae = adae,
           adsl = adsl,
           kind = "rate",
