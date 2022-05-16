@@ -255,7 +255,7 @@ ae_summary <- function(adae,
                          trans = scales::log_trans()) +
       scale_y_continuous(trans = ggforce::trans_reverser('log10'),
                          breaks = c(0.1, 0.05, 0.01)) +
-      theme_minimal(base_size = 14) +
+      theme_minimal(base_size = 18) +
       theme(legend.position = "none",
             panel.grid.minor.x = element_blank(),
             strip.text.y = element_text(angle = 0)) +
