@@ -13,7 +13,9 @@ sl_summary(
   show_plots = TRUE,
   ncol = 1,
   relevel_vec = list(NULL),
-  breaks_vec = list(NULL)
+  breaks_vec = list(NULL),
+  base_size = 18,
+  ...
 )
 }
 \arguments{

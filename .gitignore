@@ -4,3 +4,5 @@
 inst/doc
 Rlibs/
 .Rprofile
+.Renviron
+.Rproj.user/

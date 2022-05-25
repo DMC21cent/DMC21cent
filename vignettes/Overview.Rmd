@@ -45,17 +45,19 @@ library(DMC21cent)
 
 ## Exploring `SEX`
 
-```{r, fig.height=3}
+```{r, fig.height=3, fig.width=6}
 sl_summary(adsl,
            vars = "SEX",
            kinds = "bar_binom",
            titles = "Female Subjects (%)",
-           trt = "TRT01P")
+           trt = "TRT01P",
+           digits = 1,
+           base_size = 18)
 
 ```
 
 
-```{r, fig.height=3}
+```{r, fig.height=3, fig.width=6}
 sl_summary(adsl,
           vars = list("SEX" = "M"),  # `list()` only works for `bar_binom` kind
           kinds = "bar_binom",
@@ -67,14 +69,15 @@ sl_summary(adsl,
 
 
 
-```{r, fig.height=3}
+```{r, fig.height=4, fig.width=6}
 sl_summary(adsl, 
            vars = c(list("SEX" = "M"), "SEX"),
            kinds = c("bar_binom"),
            trt = "TRT01P",
            show_plots = TRUE,
            titles = c("Male Subjects (%)", "Female Subjects (%)"),
-           ncol = 1)
+           ncol = 1, 
+           base_size = 14)
 
 # or you can save the output of sl_summary() in an object.
 ```
@@ -103,7 +106,7 @@ sl_summary(adsl,
 ## Exploring `AGE`
 
 
-```{r, fig.height=3}
+```{r, fig.height=3, fig.width=6}
 sl_summary(adsl,
            vars = "AGEGR1",
            relevel_vec = list(adsl %>% pull(AGEGR1) %>% levels() %>% rev()),
@@ -113,16 +116,32 @@ sl_summary(adsl,
 ```
 
 
-```{r, fig.height=3}
-sl_summary(adsl,
-           vars = "AGE",
-           kinds = "box",
-           titles = "AGE (years)",
-           trt = "TRT01A",
-           breaks_vec = list(c(60, 70, 80, 90)),
-           show_plots = TRUE)
+```{r, fig.height=3, fig.width=6}
+sl_summary(
+  adsl,
+  vars = "AGE",
+  kinds = "box",
+  titles = "Age [years]",
+  trt = "TRT01A",
+  breaks_vec = list(c(60, 70, 80, 90)),
+  show_plots = TRUE,
+  base_size = 18
+)
 ```
 
+Show same plot but with th gridlines set to the overall 5-number summary. These are informative gridlines. 
+
+```{r, fig.height=3, fig.width=6}
+sl_summary(
+  adsl,
+  vars = "AGE",
+  kinds = "box",
+  titles = "Age [years]",
+  trt = "TRT01A",
+  show_plots = TRUE,
+  base_size = 18
+)
+```
 
 
 ```{r}
@@ -153,21 +172,21 @@ patchwork::wrap_plots(plots, ncol = 1)
 
 ## Forest Plot
 
-```{r}
+```{r, fig.height=6, fig.width=9}
 ae_summary(adae = adae,
             adsl = adsl,
             kind = "forest",
             pval_cutoff = 0.6,
             title = "Adverse events (Preferred Terms), hazard ratios",
             subtitle = "Xanomeline High Dose vs. Placebo, Safety analysis set",
-           caption = "Hazard ratio calculated from a Cox regression model."
+            caption = "Hazard ratio calculated from a Cox regression model."
            )
 ```
 
 
 ## Rate Plot
 
-```{r}
+```{r, fig.height=8, fig.width=12}
 ae_summary(adae = adae,
           adsl = adsl,
           kind = "rate",
@@ -179,7 +198,7 @@ ae_summary(adae = adae,
 ```
 
 
-```{r}
+```{r, fig.height=8, fig.width=12}
 ae_summary(adae = adae,
           adsl = adsl,
           kind = "rate",
@@ -191,7 +210,7 @@ ae_summary(adae = adae,
 ```
 
 
-```{r}
+```{r, fig.height=8, fig.width=12}
 ae_summary(adae = adae,
           adsl = adsl,
           kind = "rate",
@@ -282,7 +301,9 @@ lab_summary(adlb = adlbhy,
            kind = "shift",
            param_filter = "Alanine Aminotransferase (U/L)",
            title = NULL,  # automatically generated title,
-           shift_breaks_vec = NULL # automatically generated 25X breaks, and 50X labels
+           shift_breaks_vec = NULL, # automatically generated 25X breaks, and 50X labels
+           shift_alpha = 0.5,
+           shift_size = 3
            )
 ```
 
@@ -344,7 +365,8 @@ patient_profile(data = adae,
                 usubjid = "02-718-1371",
                 kind = 'ae',
                 str_wrap_ae_cm = 25,
-                height_ae = 250)
+                height_ae = 250,
+                color_ae = c("#5291DD", "#EC9A1E", "#CC0022"))
 ```
 
 
@@ -354,7 +376,8 @@ patient_profile(data = adae,
 patient_profile(data = adcm,
                 usubjid = "02-718-1371",
                 str_wrap_ae_cm = 25,
-                kind = 'cm')
+                kind = 'cm',
+                color_cm = "#911EB4")
 ```
 
 

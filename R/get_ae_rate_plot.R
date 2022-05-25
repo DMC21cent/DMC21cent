@@ -170,15 +170,15 @@ ae_rate_plot <- function(adae, adsl, reord_type_rateplot, title, subtitle, capti
       group = trt,
       colour = trt
     )) +
-    geom_point(size = 3) +
-    geom_line(aes(group = AEDECOD), size = 0.7, alpha = 0.25, colour = "black") +
+    geom_line(aes(group = AEDECOD), size = 1.5, alpha = 0.25, colour = "black") +
+    geom_point(size = 4.5) +
     scale_x_continuous(breaks = c(0.1, 0.2, 0.3, 0.4, 0.5)) +
     guides(colour=guide_legend(title="Treatment group")) +
-    scale_color_brewer(palette = 3) +
-    theme_minimal(base_size = 14) +
+  #  scale_color_brewer(palette = 8) +
+    theme_minimal(base_size = 18) +
     theme(
       legend.position = "top",
-      panel.grid.major.y = element_line(size = 0.3),
+      panel.grid.major.y = element_line(size = 2),
       panel.grid.minor.y = element_blank(),
       panel.grid.minor.x = element_blank(),
       axis.title.y = element_blank(),

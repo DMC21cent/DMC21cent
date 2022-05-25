@@ -10,6 +10,8 @@
 #' @param selected_visit Vector of characters. The filtration on `AVISIT` variable.
 #' @param title the main title of the plot.
 #' @param shift_breaks_vec the break x & y axis for shift plot.
+#' @param shift_alpha the opacity of the shift plot dots
+#' @param shift_size the size of the shift plot dots
 #'
 #' @import ggplot2
 #' @return A ggplot object
@@ -38,6 +40,8 @@ lab_summary <- function(adlb,
                         param_filter,
                         title = NULL,
                         shift_breaks_vec = NULL,
+                        shift_alpha = 0.5,
+                        shift_size = 3,
                         selected_visit = c("Baseline", "Week 2", "Week 4", "Week 6", "Week 8", "End of Treatment")) {
 
 
@@ -110,7 +114,8 @@ lab_summary <- function(adlb,
     ggtitle("%subjects above the upper limit of normal (ULN)") +
     guides(fill = guide_legend(title = "")) +
     theme(
-      axis.text.x = element_text(margin = margin(t = 15, r = 0, b = 0, l = 0)),
+      axis.text.x = element_text(margin = margin(t = 15, r = 0, b = 0, l = 0), color = "black"),
+      axis.text.y = element_text(color = "black"),
       #legend.position = "none",
       legend.position = c(0.8, 0.8),
       legend.direction="horizontal",
@@ -139,6 +144,7 @@ lab_summary <- function(adlb,
     guides(fill = guide_legend(title = "")) +
     theme(
       legend.position = "none",
+      axis.text.y = element_text(color = "black"),
       panel.grid.major.x = element_blank(),
       panel.grid.minor.x = element_blank(),
       panel.grid.minor.y = element_blank(),
@@ -206,6 +212,8 @@ lab_summary <- function(adlb,
       ylab(glue::glue("{param_filter}")) +
       theme(
         legend.position = "bottom",
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black"),
         panel.grid.major.x = element_blank(),
         panel.grid.minor.x = element_blank(),
         panel.grid.minor.y = element_blank())
@@ -250,7 +258,7 @@ lab_summary <- function(adlb,
 
     plot_output <- adlbhy_proc %>%
       ggplot(aes(y = AVAL, x = BASE, group = TRTP, colour = TRTP)) +
-      geom_point() +
+      geom_point(alpha = shift_alpha, size = shift_size) +
       geom_vline(xintercept = as.numeric(low)) +
       geom_vline(xintercept = as.numeric(high)) +
       geom_hline(yintercept = as.numeric(low)) +

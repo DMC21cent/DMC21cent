@@ -69,9 +69,13 @@ lab_spaghetti <- function(adlb,
     manual_colors <- Joined_Data %>%
       select(color) %>%
       distinct() %>%
-      mutate(color2 = scales::hue_pal()(Joined_Data %>%
-                                       select(color) %>%
-                                       distinct() %>% nrow())) %>%
+      # mutate(color2 = scales::hue_pal()(Joined_Data %>%
+      #                                  select(color) %>%
+      #                                  distinct() %>% nrow())) %>%
+      mutate(color2 = viridis::viridis_pal(direction  = -1, option = "A")(Joined_Data %>%
+                                                                            select(color) %>%
+                                                                            distinct() %>% nrow())) %>%
+
       mutate(color2 = ifelse(color == "#D3D3D3", "#D3D3D3", color2)) %>%
       pull(color2)
 
@@ -84,15 +88,15 @@ lab_spaghetti <- function(adlb,
                          show.legend=FALSE) +
       ggplot2::geom_line(aes(x = AVISTTF, y = AVAL, color = color, group = USUBJID),
                          data = Joined_Data %>% filter(color != "#D3D3D3"),
-                         show.legend=FALSE) +
+                         show.legend=FALSE, size=0.8) +
       ggrepel::geom_label_repel(aes(x = AVISTTF, y = AVAL, label = ifelse(abnormal_subj, USUBJID, ""),
                                     color = color),
                                 data = Joined_Data %>% filter(AVISTTF == tail(selected_visit, 1)),
                                 size = 2.5, show.legend = FALSE) +
       facet_wrap(TRTA ~ .) +
       scale_y_log10() +
-      theme(axis.text.x = element_text(size = axis_tick_size)) +
-      theme(axis.text.y = element_text(size = axis_tick_size)) +
+      # theme(axis.text.x = element_text(size = axis_tick_size, color = "black")) +
+      # theme(axis.text.y = element_text(size = axis_tick_size, color = "black")) +
       scale_color_manual(values = manual_colors) +
       theme_minimal() +
       xlab("Visit") +
@@ -109,7 +113,9 @@ lab_spaghetti <- function(adlb,
       geom_hline(aes(yintercept = 3*A1HI), linetype = "dashed", size = .3) +
       geom_text(aes(tail(selected_visit, 1), 3*A1HI, label = "3×ULN", vjust = - 1), size = 2.5) +
       geom_text(aes(head(selected_visit, 1), 3*A1HI, label = 3*A1HI, hjust = 1, vjust = - 1), color = "#63666A", size = 2.5) +
-      scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = x_axis_wrap))
+      scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = x_axis_wrap)) +
+      theme(axis.text.x = element_text(size = axis_tick_size, color = "black")) +
+      theme(axis.text.y = element_text(size = axis_tick_size, color = "black"))
 
 
 
@@ -189,9 +195,13 @@ lab_spaghetti <- function(adlb,
     manual_colors <- Joined_Data %>%
       select(color) %>%
       distinct() %>%
-      mutate(color2 = scales::hue_pal()(Joined_Data %>%
-                                       select(color) %>%
-                                       distinct() %>% nrow())) %>%
+      # mutate(color2 = scales::hue_pal()(Joined_Data %>%
+      #                                  select(color) %>%
+      #                                  distinct() %>% nrow())) %>%
+      mutate(color2 = viridis::viridis_pal(direction  = -1, option = "A")(Joined_Data %>%
+                                                                            select(color) %>%
+                                                                            distinct() %>% nrow())) %>%
+
       mutate(color2 = ifelse(color == "#D3D3D3", "#D3D3D3", color2)) %>%
       pull(color2)
 
@@ -203,7 +213,7 @@ lab_spaghetti <- function(adlb,
                          show.legend=FALSE) +
       ggplot2::geom_line(aes(x = AVISTTF, y = AVAL, color = color, group = USUBJID),
                          data = Joined_Data %>% filter(color != "#D3D3D3"),
-                         show.legend=FALSE) +
+                         show.legend=FALSE, size=0.8) +
       ggrepel::geom_label_repel(aes(x = AVISTTF, y = AVAL, label = ifelse(abnormal_subj, USUBJID, ""),
                                    color = color),
                                data = Joined_Data %>% filter(AVISTTF == tail(selected_visit, 1)),
@@ -211,13 +221,15 @@ lab_spaghetti <- function(adlb,
       facet_wrap(TRTA ~ .) +
       ggtitle(param_filter) +
       scale_y_log10() +
-      theme(axis.text.x = element_text(size = axis_tick_size)) +
-      theme(axis.text.y = element_text(size = axis_tick_size)) +
+      # theme(axis.text.x = element_text(size = axis_tick_size, color = "black")) +
+      # theme(axis.text.y = element_text(size = axis_tick_size, color = "black")) +
       scale_color_manual(values = manual_colors) +
       theme_minimal() +
       xlab("Visit") +
       ylab("") +
-      scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = x_axis_wrap))
+      scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = x_axis_wrap)) +
+      theme(axis.text.x = element_text(size = axis_tick_size, color = "black")) +
+      theme(axis.text.y = element_text(size = axis_tick_size, color = "black"))
 
 
   }
