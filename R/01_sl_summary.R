@@ -24,6 +24,7 @@
 #' @param relevel_list A list of vectors that applies a relevel on the `var` levels. It affect the order
 #'   of stacked bar plots. It only affects `bar_stack` kinds.
 #' @param breaks_vec A list of vectors that breaks the x axis of plots.
+#' @param digits integer indicating the number of decimal places to be used. Default is `0`.
 #' @return A list of ggplot objects
 #' @export
 #'
@@ -87,7 +88,7 @@
 #'      )
 #'
 #' }
-sl_summary <- function(data, vars, kinds, trt = "TRT01P", titles = NULL, show_plots = TRUE, ncol = 1, relevel_vec = list(NULL), breaks_vec = list(NULL)){
+sl_summary <- function(data, vars, kinds, trt = "TRT01P", titles = NULL, show_plots = TRUE, ncol = 1, relevel_vec = list(NULL), breaks_vec = list(NULL), base_size = 18, digits = 0, ...){
 
 
   check_length(vars, kinds)
@@ -119,11 +120,11 @@ sl_summary <- function(data, vars, kinds, trt = "TRT01P", titles = NULL, show_pl
   for(i in 1:length(vars)){
 
     if(kinds[i] == 'box'){
-      output_objects[[i]] <- get_box(data, var = vars[i], trt = trt[i], title = titles[i], breaks_vec = breaks_vec[[i]])
+      output_objects[[i]] <- get_box(data, var = vars[i], trt = trt[i], title = titles[i], breaks_vec = breaks_vec[[i]], base_size, digits = digits)
     } else if(kinds[i] == 'bar_binom'){
-      output_objects[[i]] <- get_bar_binom(data, var = vars[i], trt = trt[i], title = titles[i], base_size = 11)
+      output_objects[[i]] <- get_bar_binom(data, var = vars[i], trt = trt[i], title = titles[i], base_size, digits = digits)
     } else if(kinds[i] == 'bar_stack'){
-      output_objects[[i]] <- get_bar_stack(data, var = vars[i], trt = trt[i], title = titles[i], base_size = 11, relevel_vec = relevel_vec[[i]])
+      output_objects[[i]] <- get_bar_stack(data, var = vars[i], trt = trt[i], title = titles[i], base_size, relevel_vec = relevel_vec[[i]], digits = digits)
     }
 
   }
@@ -167,11 +168,12 @@ check_length <- function(vars, alts){
 #' @param trt the column name for planned treatment. Default is `TRT01P`.
 #' @param title the main title of plot.
 #' @param breaks_vec the vector of breaks showing in the x axis.
+#' @param digits integer indicating the number of decimal places to be used. Default is `0`.
 #'
 #' @return ggplot object
 #' @keywords internal
 #' @noRd
-get_box <- function(data, var, trt, title, breaks_vec) {
+get_box <- function(data, var, trt, title, breaks_vec, base_size = 18, digits = 1) {
 
   ## Get the variable label for plot axis
   #------------------------------------------------
@@ -185,7 +187,7 @@ get_box <- function(data, var, trt, title, breaks_vec) {
     dplyr::summarize(N = dplyr::n()) %>%
     dplyr::mutate(
       freq = N / sum(N),
-      pct = round((freq * 100), 1),
+      pct = round((freq * 100), digits),
       axis_lab = pct #paste0(pct, "%")
     ) %>%
     group_by(!!sym(trt)) %>%
@@ -220,15 +222,18 @@ get_box <- function(data, var, trt, title, breaks_vec) {
       alpha = 0.5
     ) +
     #geom_rug(sides = "b") +
-    theme_light(base_size = 10) +
+    #theme_light(base_size = 10) +
+    theme_minimal(base_size = base_size) +
     # scale_x_continuous(limit = c(min(data[[selection]]), max(data[[selection]])),
     #                    breaks = round(fivenum(data[[selection]]), 0)) +
     xlab(xlab) +
     theme(
       panel.grid.major.y = element_blank(),
       panel.grid.minor = element_blank(),
+      axis.text.x = element_text(color = "black"),
+      axis.text.y = element_text(color = "black"),
       axis.title = element_blank(),
-      plot.title = element_text(hjust = 0.5)
+      plot.title = element_text(hjust = 0.1)
     )
 
   if(is.null(title)){
@@ -273,11 +278,12 @@ get_box <- function(data, var, trt, title, breaks_vec) {
 #' @param trt the column name for planned treatment. Default is `TRT01P`.
 #' @param title the main title of the ggplot
 #' @param base_size the \code{base_size} of the ggplot \code{theme_minimal}. Default is 11.
+#' @param digits integer indicating the number of decimal places to be used. Default is `0`.
 #'
 #' @return ggplot object
 #' @keywords internal
 #' @noRd
-get_bar_binom <- function(data, var, trt, title = NA, base_size = 11){
+get_bar_binom <- function(data, var, trt, title = NA, base_size = 18, digits = 1){
 
   if(class(var) == 'list' && names(var) != ""){
     var_filter = var[[1]]
@@ -309,7 +315,7 @@ get_bar_binom <- function(data, var, trt, title = NA, base_size = 11){
     #ungroup() %>%
     dplyr::mutate(
       freq = N / sum(N),
-      pct = round((freq * 100), 1)
+      pct = round((freq * 100), digits)
     ) %>%
     dplyr::mutate(axis_lab = paste0(pct)) %>%
     group_by(!!sym(trt)) %>%
@@ -320,8 +326,9 @@ get_bar_binom <- function(data, var, trt, title = NA, base_size = 11){
     dplyr::ungroup() %>%
     dplyr::filter(!!sym(var) == var_filter) %>%
     ggplot(aes(x = trt_with_label, y = pct, fill = !!sym(var), label = axis_lab)) +
-    geom_bar(stat = "identity", size = 0.8, position = position_dodge(width = 1), alpha = 0.6) +
-    geom_text(aes(y = pct + 9.5), position = position_dodge(width = 1), size = 3, vjust = 0) +
+    geom_hline(yintercept = 0, colour = "wheat4", linetype=1, size=0.6)+
+    geom_bar(stat = "identity", size = 0.5, position = position_dodge(width = 1), alpha = 0.8) +
+    geom_text(aes(y = pct), position = position_dodge(width = 1), size = 5, vjust = 0, hjust=1.6, color = "white") +
     scale_y_continuous(limit = c(0, 100))+
     theme_minimal(base_size = base_size) +
     coord_flip() +
@@ -333,8 +340,10 @@ get_bar_binom <- function(data, var, trt, title = NA, base_size = 11){
           panel.grid.major.y = element_blank(),
           panel.grid.minor.y = element_blank(),
           panel.grid.minor.x = element_blank(),
+          axis.text.x = element_text(color = "black"),
+          axis.text.y = element_text(color = "black"),
           axis.title = element_blank(),
-          plot.title = element_text(hjust = 0.5))
+          plot.title = element_text(hjust = 0.1))
 
 }
 
@@ -348,11 +357,12 @@ get_bar_binom <- function(data, var, trt, title = NA, base_size = 11){
 #' @param base_size the \code{base_size} of the ggplot \code{theme_minimal}. Default is 10.
 #' @param relevel_vec A vector of characters that shoes a relevel of the `var` levels. It affect the order
 #'   of stacked bar plots.
+#' @param digits integer indicating the number of decimal places to be used. Default is `0`.
 #'
 #' @return ggplot object
 #' @keywords internal
 #' @noRd
-get_bar_stack <- function(data, var, trt, title = NA, base_size = 10, relevel_vec = NULL){
+get_bar_stack <- function(data, var, trt, title = NA, base_size = 10, relevel_vec = NULL, digits = 1){
 
   if(is.na(title)){
     title <- NULL
@@ -369,7 +379,7 @@ get_bar_stack <- function(data, var, trt, title = NA, base_size = 10, relevel_ve
     dplyr::summarize(N = dplyr::n()) %>%
     dplyr::mutate(
       freq = N / sum(N),
-      pct = round((freq * 100), 1),
+      pct = round((freq * 100), digits),
       axis_lab = pct #paste0(pct, "%")
       ) %>%
     group_by(!!sym(trt)) %>%
@@ -391,6 +401,8 @@ get_bar_stack <- function(data, var, trt, title = NA, base_size = 10, relevel_ve
           panel.grid.major.y = element_blank(),
           panel.grid.minor.y = element_blank(),
           panel.grid.minor.x = element_blank(),
+          axis.text.x = element_text(color = "black"),
+          axis.text.y = element_text(color = "black"),
           axis.title = element_blank(),
           plot.title = element_text(hjust = 0.5))
 

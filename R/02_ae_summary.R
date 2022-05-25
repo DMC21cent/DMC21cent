@@ -176,6 +176,8 @@ ae_summary <- function(adae,
       panel.grid.minor.y = element_blank(),
       panel.grid.minor.x = element_blank(),
       axis.title.y = element_blank(),
+      axis.text.x = element_text(color = "black"),
+      axis.text.y = element_text(color = "black"),
       strip.text.y = element_text(angle = 0),
       plot.title = element_text(hjust = 0.5),
       plot.subtitle = element_text(hjust = 0.5)
@@ -215,6 +217,8 @@ ae_summary <- function(adae,
       theme(legend.position = "none",
             #        panel.grid.major.y = element_blank(),
             #        panel.grid.minor.y = element_blank(),
+            axis.text.x = element_text(color = "black"),
+            axis.text.y = element_text(color = "black"),
             panel.grid.minor.x = element_blank(),
             #        axis.text.y = element_blank(),
             #        axis.title.y = element_blank(),
@@ -255,9 +259,11 @@ ae_summary <- function(adae,
                          trans = scales::log_trans()) +
       scale_y_continuous(trans = ggforce::trans_reverser('log10'),
                          breaks = c(0.1, 0.05, 0.01)) +
-      theme_minimal(base_size = 14) +
+      theme_minimal(base_size = 18) +
       theme(legend.position = "none",
             panel.grid.minor.x = element_blank(),
+            axis.text.x = element_text(color = "black"),
+            axis.text.y = element_text(color = "black"),
             strip.text.y = element_text(angle = 0)) +
       xlab("Hazard ratio") +
       ylab("FDR adjusted p-value") +

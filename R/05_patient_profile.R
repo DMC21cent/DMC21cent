@@ -25,7 +25,7 @@ patient_profile <- function(data,
                             height_ae = 250,
                             order_servere_ae = c("MILD", "MODERATE", "SEVERE"),
                             color_ae = sample_colors[c('Blue Light', 'Apricot', 'Red')],
-                            color_cm = sample_colors[c('Purple')],
+                            color_cm = "#911EB4",
                             str_wrap_ae_cm = 25,
                             params_lab = c("Alanine Aminotransferase (U/L)",
                                    "Aspartate Aminotransferase (U/L)",
@@ -91,7 +91,11 @@ if(kind == 'summary'){
     geom_hline(aes(yintercept = A1HI), linetype = "dashed", size = .3) +
     ylab("") +
     xlab("Visit") +
-    theme_minimal()
+    theme_minimal() +
+    theme(
+      axis.text.x = element_text(color = "black"),
+      axis.text.y = element_text(color = "black")
+    )
 
 
   if(transform_lab == 'log'){
@@ -274,7 +278,7 @@ df <- df %>%
                x = ~.data[[ "ASTDT" ]], xend = ~.data[[ "AENDT" ]],
                y = ~.data[[ "CMTRT_wrapped" ]], yend = ~.data[[ "CMTRT_wrapped" ]],
                color = col,
-               colors = "#911EB4", #size = I( 5 )
+               colors = color_cm, #"#911EB4", #size = I( 5 )
                opacity = 1,
                line= list( width=5 ),
                text = ~.data[[ 'AENDT' ]],
