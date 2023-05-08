@@ -5,7 +5,7 @@
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
-{DMC21cent} is an R package designed to provide potential solutions for Data Monitoring Committee (DMC) decision-making processes. This package is developed to support the research paper titled "DMC Reports in the 21st Century: Towards Better Tools for Decision-Making," which can be accessed at [Here](https://trialsjournal.biomedcentral.com/articles/10.1186/s13063-023-07290-4).
+{DMC21cent} is an R package designed to provide potential solutions for Data Monitoring Committee (DMC) decision-making processes. This package is developed to support the research paper titled "DMC Reports in the 21st Century: Towards Better Tools for Decision-Making," which can be accessed [here](https://trialsjournal.biomedcentral.com/articles/10.1186/s13063-023-07290-4).
 
 The following is the abstract of the paper:
 
