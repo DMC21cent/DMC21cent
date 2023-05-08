@@ -9,6 +9,4 @@
 
 The following is the abstract of the paper:
 
-[Abstract]
-
 Data Monitoring Committees (DMCs) have the important task to protect the safety of current and future patients during the conduct of a clinical study. Unfortunately, their work is often made difficult by voluminous DMC reports that are poorly structured and difficult to digest. In this article, we suggest improved solutions. Starting from a principled approach and building upon previous proposals, we offer concrete and easily understood displays, including related computer code. While leveraging modern tools, the most important is that these displays support the DMC's workflow in answering the relevant questions of interest. We hope that the adoption of these proposals can ease the task of DMCs, and importantly, lead to better decision-making for the benefit of patients.
